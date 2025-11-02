@@ -1,0 +1,2368 @@
+/* === Fuente Lemon Milk (Bold) === */
+@font-face{
+  font-family: 'Lemon Milk';
+  src: url('fonts/LEMONMILK-Bold.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+:root{
+  font-synthesis: none;
+  --banner-h: 126px; /* altura visual aprox del banner */
+}
+
+/* ===== Fondo ===== */
+html, body{
+  background: #082F6C;
+  height:100%; 
+  margin:0;
+  background:
+    radial-gradient(900px 520px at 78% 14%, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0) 60%),
+    radial-gradient(800px 500px at 18% 86%, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0) 60%),
+    linear-gradient(145deg,#0F6FDC 0%,#0B5FCA 30%,#0A51AF 58%,#0A428F 78%,#082F6C 100%);
+  background-attachment: fixed;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+  color:#fff;
+}
+
+/* ===== Banner de beneficios (arriba) ===== */
+.features{
+  position: absolute;
+  top: 2px;
+  left: 0;
+  right: 0;
+  transform: none;
+  margin: 0 clamp(10px, 3vw, 28px);        /* casi a los laterales */
+  display: grid;
+  grid-auto-flow: column;
+  gap: 30px;
+  align-items: center;
+  padding: 18px clamp(16px, 2.5vw, 26px);
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+  box-shadow:
+    0 18px 40px rgba(0,0,0,.28),
+    0 0 0 1px rgba(255,255,255,.06) inset;
+  z-index: 90;
+}
+
+.feat{
+  display:flex; align-items:center; gap:14px;
+  min-width: 210px;
+}
+.feat-icon{
+  width:58px; height:58px; border-radius:50%;
+  display:grid; place-items:center;
+  box-shadow: 0 10px 20px rgba(0,0,0,.35),
+              0 0 0 1px rgba(255,255,255,.10) inset;
+  background: radial-gradient(130% 130% at 30% 20%, rgba(255,255,255,.06), rgba(255,255,255,.02));
+}
+.feat-icon svg{
+  width:34px; height:34px; fill:none; stroke:#fff; stroke-width:2;
+  opacity:.95;
+}
+.feat-title{ font-weight:800; letter-spacing:.01em; }
+.feat-sub{ font-size:13px; opacity:.85; }
+
+/* ===== Hero ===== */
+.hero-header{
+  /* crea espacio bajo el banner fijo */
+  padding-top: calc(var(--banner-h) + 20px);
+  position: relative;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+.hero-inner{
+  pointer-events: auto;
+  display:flex; flex-direction:column; align-items:center; text-align:center;
+  transform: translateY(-8vh);  /* más abajo que antes */
+}
+.logo-text, .subtitle{ font-family:'Lemon Milk', sans-serif; font-weight:900; }
+.logo-text{
+  font-size:128px; line-height:1; margin:0;
+  text-shadow: 0 8px 24px rgba(0,0,0,.35);
+}
+.title-underline{
+  width:350px; max-width:76vw; height:2.6px;
+  background:rgba(255,255,255,.85);
+  border-radius:2px; margin:10px 0 12px 0;
+}
+.subtitle{
+  font-size:18px; letter-spacing:.34em; text-transform:uppercase; margin:0;
+  text-shadow:0 6px 16px rgba(0,0,0,.32);
+}
+.tagline{
+  margin:40px 0 0 0; font-size:22px; font-weight:600; opacity:.96;
+}
+
+/* ===== Teléfono ===== */
+.phone{
+  position: absolute; top: 20vh; right: 8vw;       /* ↓ libera la esquina del banner */
+  height: clamp(420px, 58vh, 630px);
+  aspect-ratio: 9/19.5; transform: rotate(8deg);
+  z-index:50; pointer-events:none;
+}
+.phone__bezel{
+  position:relative; width:100%; height:100%;
+  border-radius:32px;
+  background: linear-gradient(160deg, #0b2a49, #0e1a2c 58%, #09121f);
+  box-shadow: 0 18px 40px rgba(0,0,0,.45),
+              0 2px 4px rgba(0,0,0,.25) inset,
+              0 0 0 10px rgba(0,0,0,.18) inset;
+  padding:18px;
+}
+.phone__screen{
+  position:relative; width:100%; height:100%;
+  border-radius:24px; overflow:hidden; background:#0a2b4b;
+  box-shadow:0 0 0 1px rgba(0,0,0,.06) inset;
+}
+.phone__screen .screen-img{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; border-radius:inherit; opacity:0; transition:opacity .6s ease;
+  filter:contrast(1.02) saturate(1.05);
+}
+.phone__screen .screen-img.is-visible{ opacity:1; }
+.phone__screen::after{
+  content:""; position:absolute; inset:0; pointer-events:none; opacity:0;
+}
+@keyframes flashPulse{
+  0%{opacity:0;}
+  10%{opacity:.9; background:radial-gradient(60% 60% at 50% 30%, rgba(255,255,255,.95), rgba(255,255,255,0) 60%);}
+  100%{opacity:0;}
+}
+.phone__screen.flash::after{ animation:flashPulse 420ms ease-out; }
+.phone__notch{
+  position:absolute; top:10px; left:50%; transform:translateX(-50%);
+  width:38%; height:18px; background:#0c1727;
+  border-bottom-left-radius:12px; border-bottom-right-radius:12px; z-index:3;
+  box-shadow: 0 2px 4px rgba(0,0,0,.35), 0 1px 0 rgba(255,255,255,.06) inset;
+}
+
+/* ===== Botón Play (abajo centrado) ===== */
+.store-cta{
+  position: absolute; left:50%; bottom: 8vh; transform: translateX(-50%);
+  z-index: 60; display:block;
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,.35));
+}
+.play-badge{ height:78px; width:auto; display:block; }
+
+/* ===== Responsive ===== */
+@media (max-width:1080px){
+  .phone{ top:14vh; right:5vw; height: clamp(360px, 48vh, 520px); transform: rotate(12deg); }
+  .hero-inner{ transform: translateY(-6vh); }
+}
+@media (max-width:820px){
+  .features{ gap:18px; padding:14px 18px; margin: 0 clamp(8px, 2.5vw, 20px); }
+  .feat{ min-width:180px; }
+  .feat-icon{ width:52px; height:52px; }
+  .feat-icon svg{ width:30px; height:30px; }
+  .phone{ top:12vh; right:4vw; transform: rotate(8deg); opacity:.9; }
+  .play-badge{ height:70px; }
+}
+@media (max-width:640px){
+  .phone{ display:none; }
+  .hero-inner{ transform: translateY(-2vh); }
+  .logo-text{ font-size:92px; }
+  .title-underline{ width:72vw; }
+  .subtitle{ font-size:16px; letter-spacing:.30em; }
+  .play-badge{ height:64px; }
+  .features{ top:8px; margin: 0 10px; }
+}
+
+/* ===== Mensaje encima del botón (descarga) ===== */
+.download-hint{
+  position: absolute;
+  left: 50%;
+  bottom: calc(8vh + 105px);            /* queda justo encima del badge */
+  transform: translateX(-50%);
+  z-index: 65;
+
+  padding: 12px 18px;
+  border-radius: 14px;
+  backdrop-filter: blur(10px);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+  box-shadow:
+    0 18px 40px rgba(0,0,0,.28),
+    0 0 0 1px rgba(255,255,255,.08) inset;
+
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: .01em;
+  text-align: center;
+  max-width: min(720px, 86vw);
+}
+
+/* brillo sutil en el texto clave */
+.download-hint strong{
+  background: linear-gradient(90deg, #fff, #B8D8FF 60%, #fff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(184,216,255,.35);
+}
+
+/* flecha animada hacia abajo (movimiento vertical lineal) */
+.download-hint::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -16px;                     /* posición base */
+  width: 14px;
+  height: 14px;
+  transform: translateX(-50%) rotate(45deg);  /* fijo, sin translateY */
+  border-bottom: 3px solid rgba(255,255,255,.85);
+  border-right: 3px solid rgba(255,255,255,.85);
+  filter: drop-shadow(0 6px 8px rgba(0,0,0,.25));
+  animation: hintBounce 1.2s linear infinite; /* linear en vez de ease-in-out */
+}
+
+@keyframes hintBounce{
+  0%, 100% { bottom: -16px; opacity: .95; }  /* punto de partida */
+  50%      { bottom: -10px; opacity: .60; }  /* sube 6px (ajusta a gusto) */
+}
+
+
+/* Responsivo: acercar un poco en pantallas pequeñas */
+@media (max-width: 640px){
+  .download-hint{
+    bottom: calc(8vh + 89px);
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+}
+
+
+
+/* =========================
+   CÓMO FUNCIONA (1-2-3)
+   ========================= */
+.hiw{
+  position: absolute;
+  left: clamp(5px, 2vw, 18px);
+  top: calc(var(--banner-h) + 54px);
+  width: min(420px, 28vw);
+  z-index: 45;
+}
+
+.hiw-title{
+  margin: 0 0 10px 6px;
+  font-weight: 800;
+  letter-spacing: .02em;
+  opacity: .9;
+  text-shadow: 0 4px 10px rgba(0,0,0,.25);
+}
+
+.hiw-steps{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.hiw-step{
+  position: relative;
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 14px 14px;
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+  box-shadow:
+    0 10px 26px rgba(0,0,0,.28),
+    0 0 0 1px rgba(255,255,255,.06) inset;
+}
+
+/* línea conectora entre pasos */
+.hiw-step:not(:last-child)::after{
+  content: "";
+  position: absolute;
+  left: 24px; top: calc(100% - 2px);
+  width: 2px; height: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,0));
+  filter: blur(.2px);
+}
+
+.hiw-badge{
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  font-weight: 900;
+  background: radial-gradient(130% 130% at 30% 20%, rgba(255,255,255,.12), rgba(255,255,255,.04));
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.35),
+    0 0 0 1px rgba(255,255,255,.12) inset;
+}
+
+.hiw-head{
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 4px;
+}
+
+.hiw-head svg{
+  width: 22px; height: 22px;
+  color: #fff; opacity: .95;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,.25));
+}
+
+.hiw-desc{
+  margin: 0;
+  font-size: 14px;
+  opacity: .88;
+}
+
+/* Responsivo: ocultar en pantallas chicas para dar aire */
+@media (max-width: 1080px){
+  .hiw{ width: 44vw; }
+}
+@media (max-width: 920px){
+  .hiw{ display: none; }
+}
+
+/* --- HIW: entrada escalonada --- */
+.hiw-step{
+  opacity: 0;
+  transform: translateX(-10px) scale(.98);
+  filter: blur(2px);
+}
+
+.hiw-step.revealed{
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  filter: none;
+  transition:
+    opacity .38s ease-out,
+    transform .38s ease-out,
+    filter .38s ease-out;
+}
+
+/* toque de brillo breve al aparecer (opcional) */
+.hiw-step.revealed .hiw-badge{
+  animation: hiwPop 480ms ease-out;
+}
+@keyframes hiwPop{
+  0%   { transform: scale(.9);   box-shadow: 0 0 0 0 rgba(255,255,255,.0); }
+  60%  { transform: scale(1.04); box-shadow: 0 0 0 10px rgba(255,255,255,.08); }
+  100% { transform: scale(1);    box-shadow: 0 0 0 0 rgba(255,255,255,.0); }
+}
+
+/* ==== Scroll suave y contenedor de contenido con scroll ==== */
+html { scroll-behavior: smooth; }
+
+.page-content{
+  /* ancho centrado y respiración respecto a elementos fijos */
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  /* deja aire debajo del banner/hero/phone fijos */
+  padding-top: 48vh;         /* desplaza el inicio del contenido hacia abajo */
+  padding-bottom: 200px;     /* que no lo tape el botón Play (fijo) */
+}
+
+.section{
+  margin: 32px 0;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  padding: 18px 18px 12px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.28);
+}
+
+.section h2{
+  margin: 6px 6px 12px;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+/* ==== Cards 3 columnas ==== */
+.cards3{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 14px;
+}
+.card3{
+  grid-column: span 4;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.25);
+}
+.card3 h3{ margin: 6px 0 8px; }
+.card3 p{ margin: 0; opacity: .92; }
+
+/* ==== Galería ==== */
+.gallery-grid{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 12px;
+}
+.gallery-grid figure{
+  grid-column: span 4;
+  margin: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 8px 18px rgba(0,0,0,.25);
+}
+.gallery-grid img{
+  width: 100%; height: 220px; object-fit: cover; display: block;
+  filter: contrast(1.02) saturate(1.06);
+}
+.gallery-grid figcaption{
+  padding: 10px 12px;
+  font-size: 14px;
+  opacity: .92;
+}
+
+/* Espaciador final para que nada quede detrás del botón Play */
+.page-spacer{
+  height: 120px;
+}
+
+/* ==== Responsivo ==== */
+@media (max-width: 1024px){
+  .card3{ grid-column: span 6; }
+  .gallery-grid figure{ grid-column: span 6; }
+}
+@media (max-width: 680px){
+  .page-content{ padding-top: 18vh; } /* en móviles ya ocultas el teléfono */
+  .card3, .gallery-grid figure{ grid-column: span 12; }
+  .gallery-grid img{ height: 200px; }
+}
+
+/* --- Tarjeta presionable para el curso --- */
+.pressable{
+  display:block;
+  cursor:pointer;
+  transition: transform .14s ease, box-shadow .14s ease, filter .14s ease;
+  will-change: transform;
+}
+
+/* Sombra/levitación leve al pasar el mouse */
+.pressable:hover{
+  transform: translateY(-2px);
+  filter: brightness(1.02);
+}
+
+/* Efecto “sumirse” al hacer clic (mouse o touch) */
+.pressable:active{
+  transform: translateY(2px) scale(0.985);
+  box-shadow: 0 6px 14px rgba(0,0,0,.22) !important; /* un poco menos de sombra */
+}
+
+/* Enlaces con apariencia de tarjeta: heredan color y sin subrayado */
+a.card3,
+a.card3:link,
+a.card3:visited{
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Tampoco cambies color al pasar el mouse o enfocarse */
+a.card3:hover,
+a.card3:active,
+a.card3:focus{
+  color: inherit;
+  outline: none;
+}
+
+/* Feedback táctil sin aclarar la burbuja */
+.pressable:hover{
+  transform: translateY(-2px);
+  /* quitar brillo para que no cambie el fondo */
+  filter: none;
+}
+.pressable:active{
+  transform: translateY(2px) scale(0.985);
+  box-shadow: 0 6px 14px rgba(0,0,0,.22) !important;
+}
+
+
+
+/*-------------------------------------------------------------------------*/
+/* redondea SOLO la imagen dentro de esa tarjeta */
+.rel-curso img{
+  border-radius: 12px;   /* ajusta el radio a tu gusto */
+  display: block;        /* elimina pequeños espacios debajo */
+}
+/* Centrar el texto solo en la tarjeta del curso */
+.rel-curso{
+  text-align: center;
+}
+
+
+
+
+/* ===== Bloques tipo "Kali.org" (imagen + texto) ===== */
+.split{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 14px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+  box-shadow:
+    0 10px 24px rgba(0,0,0,.28),
+    0 0 0 1px rgba(255,255,255,.08) inset;
+  margin-bottom: 16px;
+}
+
+.split.invert{
+  flex-direction: row-reverse;
+}
+
+.split-media{
+  flex: 1.15;            /* un poco más ancha que el texto */
+  min-width: 0;          /* para que flex no rompa el layout */
+  border-radius: 14px;
+  overflow: hidden;      /* recorta la imagen a bordes redondeados */
+}
+
+.split-media img{
+  width: 100%;
+  aspect-ratio: 16 / 9;  /* relación agradable tipo hero */
+  object-fit: cover;
+  display: block;
+  filter: contrast(1.03) saturate(1.05);
+}
+
+.split-content{
+  flex: 1;
+  min-width: 260px;
+}
+
+.split-content h3{
+  margin: 6px 0 8px;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+.split-content p{
+  margin: 0 0 10px;
+  opacity: .92;
+  line-height: 1.45;
+}
+
+/* Responsive: apilar en pantallas medianas/chicas */
+@media (max-width: 960px){
+  .split, .split.invert{ flex-direction: column; }
+  .split-media, .split-content{ width: 100%; }
+}
+
+/*AQÍ*/
+
+/* Mantén el look limpio */
+.split-media{ border-radius: 14px; overflow: hidden; }
+.split-content{ padding: 8px 0 0; }
+
+.section-plain{
+  background: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+
+/* Imagen vertical tipo celular en el bloque "split" */
+.split-media.portrait{
+  flex: 0 0 360px;      /* ancho fijo estilo teléfono (ajusta 300–420px) */
+  max-width: 360px;
+}
+
+.split-media.portrait img{
+  width: 100%;
+  aspect-ratio: 9 / 20; /* vertical */
+  object-fit: cover;    /* recorta los lados si la foto es horizontal */
+  object-position: center; /* enfoca al centro (cambia a 'right center' o 'left center' si conviene) */
+  display: block;
+}
+
+/* Opcional: en pantallas chicas, que use todo el ancho */
+@media (max-width: 960px){
+  .split-media.portrait{
+    flex: 0 0 auto;
+    max-width: 100%;
+  }
+}
+
+/* segunda imagen*/
+.split-media.port{
+  flex: 0 0 600px;      /* ancho fijo estilo teléfono (ajusta 300–420px) */
+  max-width: 600px;
+}
+
+.split-media.port img{
+  width: 100%;
+  aspect-ratio: 19 / 19; /* vertical */
+  object-fit: cover;    /* recorta los lados si la foto es horizontal */
+  object-position: center; /* enfoca al centro (cambia a 'right center' o 'left center' si conviene) */
+  display: block;
+}
+
+/* Opcional: en pantallas chicas, que use todo el ancho */
+@media (max-width: 960px){
+  .split-media.port{
+    flex: 0 0 auto;
+    max-width: 100%;
+  }
+}
+
+
+/* Sección negra solo para "Comienza hoy mismo" */
+.section-dark{
+  background: #0b0b0b;                     /* negro */
+  border: 1px solid rgba(255,255,255,.08); /* sutil borde */
+  box-shadow: 0 10px 24px rgba(0,0,0,.45);
+  border-radius: 16px;
+  padding: 18px 18px 12px;
+}
+
+/* Si no quieres “burbujas” internas, deja las filas planas */
+.section-dark .split{
+  background: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Fondo negro full-bleed SOLO para esta sección */
+.section-dark{
+  position: relative;
+  background: none;     /* quita la burbuja */
+  border: 0;
+  box-shadow: none;
+  padding: 24px 0;      /* respira sin el marco */
+}
+
+/* Capa de fondo que ocupa el ancho total de la ventana */
+.section-dark::before{
+  content:"";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;         /* se extiende de lado a lado */
+  background: #000;     /* negro sólido */
+  z-index: -1;          /* queda detrás del contenido */
+}
+
+/* Mantén las filas planas (sin burbuja) dentro de la sección negra */
+.section-dark .split{
+  background: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+
+/* Contorno y halo azul tipo Kali */
+.split-media.glow-blue{
+  position: relative;
+  border-radius: 16px;        /* mismo radio que uses en la imagen */
+  overflow: visible;          /* para que el halo no se recorte */
+}
+.split-media.glow-blue img{
+  display:block;
+  width:100%;
+  border-radius: inherit;     /* la imagen mantiene las esquinas */
+}
+
+/* Pseudo-elemento para el borde y el brillo */
+.split-media.glow-blue::after{
+  content:"";
+  position:absolute;
+  inset:-4px;                 /* “crece” un poco hacia afuera */
+  border-radius: inherit;
+  pointer-events:none;
+  box-shadow:
+    0 0 0 3px #2aa5ff,                     /* contorno nítido */
+    0 0 22px 4px rgba(42,165,255,.80),
+    0 0 24px rgba(42,165,255,.65),         /* halo 1 */
+    0 0 48px rgba(42,165,255,.35);         /* halo 2 */
+}
+
+/* Contorno/halo blanco (igual que el azul, pero blanco) */
+.split-media.glow-white{ overflow: visible; }          /* que no se recorte el glow */
+.split-media.glow-white img{
+  display: block;
+  border-radius: 16px;                                  /* ajusta si usas otro radio */
+  box-shadow:
+    0 0 0 3px rgba(255,255,255,1),                      /* contorno nítido */
+    0 0 24px rgba(255,255,255,.70),                     /* halo 1 */
+    0 0 48px rgba(255,255,255,.40);                     /* halo 2 */
+}
+
+/* Más separación entre la imagen y el texto solo en "Comienza hoy mismo" */
+.section-dark .split{
+  gap: 40px;          /* prueba 28–48px según te guste */
+}
+
+
+/* Reduce el aire superior de la sección negra */
+.section-dark{
+  padding-top: 50px;         /* antes lo tenías más alto */
+}
+
+/* Quita el margen superior por defecto del H2 y controla el inferior */
+.section-dark h2{
+  margin-top: 0;            /* súbelo pegándolo al borde de la sección */
+  margin-bottom: 30px;      /* espacio debajo del título */
+}
+
+  /* Imagen vertical tipo celular en el bloque "split" */
+.split-media.portrai{
+  flex: 0 0 250px;      /* ancho fijo estilo teléfono (ajusta 300–420px) */
+  max-width: 250px;
+}
+
+.split-media.portrai img{
+  width: 100%;
+  aspect-ratio: 9 / 50; /* vertical */
+  object-fit: cover;    /* recorta los lados si la foto es horizontal */
+  object-position: center; /* enfoca al centro (cambia a 'right center' o 'left center' si conviene) */
+  display: block;
+}
+
+
+/* Contorno/halo blanco (igual que el azul, pero blanco) */
+.split-media.glow-whited{ overflow: visible; }          /* que no se recorte el glow */
+.split-media.glow-whited img{
+  display: block;
+  border-radius: 16px;                                  /* ajusta si usas otro radio */
+  box-shadow:
+    0 0 0 3px rgba(255,255,255,1),                      /* contorno nítido */
+    0 0 24px rgba(255,255,255,.70),                     /* halo 1 */
+    0 0 48px rgba(255,255,255,.40);                     /* halo 2 */
+}
+
+/* Más aire entre filas (imagen + texto) en la sección negra */
+.section-dark .split{
+  margin-bottom: 64px;   /* prueba 36–64px, por el glow */
+}
+
+/* === Fila 4 (invertida): imagen a la derecha === */
+/* Tamaño del marco: cámbialo libremente */
+.split.invert .split-media.port{
+  width: 560px;         /* ← ANCHO deseado */
+  height: 560px;        /* ← ALTO deseado */
+  flex: 0 0 560px;      /* igual al width para que flex no lo estire */
+  overflow: visible;    /* que no recorte el glow */
+}
+
+/* Imagen dentro del marco */
+.split.invert .split-media.port img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;    /* usa 'contain' si no quieres recorte */
+  border-radius: 16px;
+}
+
+/* Contorno + glow azul (reutilizable) */
+.split-media.glow-bluke{ overflow: visible; }
+.split-media.glow-bluke img{
+  box-shadow:
+    0 0 0 4px #2aa5ff,                          /* borde nítido */
+    0 0 22px 4px rgba(42,165,255,.80),           /* halo cercano */
+    0 0 60px 12px rgba(42,165,255,.55),          /* halo medio */
+    0 0 90px 20px rgba(42,165,255,.35);          /* halo lejano */
+}
+
+/* Responsive (opcional) */
+@media (max-width: 980px){
+  .split.invert .split-media.port{
+    width: 100%;
+    max-width: 520px;   /* límite superior si quieres */
+    height: auto;
+    aspect-ratio: 16/9; /* o quítalo si prefieres altura libre */
+    flex: 0 0 auto;
+  }
+  .split.invert .split-media.port img{
+    height: 100%;
+    object-fit: cover;  /* o 'contain' */
+  }
+}
+
+/* === Limitar tamaño SOLO a la imagen de la Fila 5 (invertida) === */
+.section-dark .split:nth-of-type(4) .split-media.port{
+  width: auto;                 /* no la fuerces a ocupar la columna */
+  max-width: 420px;            /* ← AJUSTA este tope */
+  flex: 0 0 420px;             /* no crece más allá del tope */
+  overflow: visible;           /* que no se corte el glow */
+}
+
+.section-dark .split:nth-of-type(4) .split-media.port img{
+  width: 100%;
+  height: auto;                /* mantiene la proporción original */
+  /* si la quieres más “teléfono”:
+     aspect-ratio: 9 / 16;
+     height: auto;  (deja 'width:100%')
+  */
+}
+
+/* Opcional: en pantallas chicas, que no se desborde */
+@media (max-width: 980px){
+  .section-dark .split:nth-of-type(4) .split-media.port{
+    max-width: 340px;          /* otro tope en móviles (ajusta) */
+    flex: 0 0 340px;
+  }
+}
+
+/* --- Fila 4: mostrar la captura COMPLETA, sin recortes --- */
+.section-dark .split:nth-of-type(4) .split-media.port{
+  /* controla el ancho y deja que el alto se calcule por la proporción de la imagen */
+  max-width: 420px;      /* ← ajusta el tope que quieras (360, 400, etc.) */
+  width: 100%;
+  height: auto;          /* quita alto fijo */
+  flex: 0 0 auto;        /* no fuerces el alto por flex */
+  overflow: visible;     /* para que el glow no se corte */
+  display: grid;         /* centra la imagen si le sobra espacio */
+  place-items: center;
+}
+
+.section-dark .split:nth-of-type(4) .split-media.port img{
+  width: 100%;
+  height: auto;          /* conserva proporción */
+  object-fit: contain;   /* NO recorta nada */
+  aspect-ratio: auto;    /* por si tenías algún aspect-ratio heredado */
+  border-radius: 16px;   /* mantenemos las esquinas redondas */
+  max-height: 75vh;      /* opcional: evita que se haga altísima en pantallas pequeñas */
+}
+
+/* --- Fila 4: que el glow abrace SOLO la imagen --- */
+.section-dark .split:nth-of-type(4) .split-media.porta{
+  overflow: visible;        /* que no recorte el halo */
+  box-shadow: none !important;   /* por si alguna regla anterior puso glow al contenedor */
+  padding: 0;               /* evita que el halo se vea “separado” */
+}
+
+/* aplica el glow al <img> (no al contenedor) */
+.section-dark .split:nth-of-type(4) .split-media.port img{
+  display: block;           /* quita el gap de imágenes inline */
+  max-width: 100%;
+  height: auto;             /* ya tienes contain/cover según lo que elegiste */
+  border-radius: 16px;
+  box-shadow:
+  0 0 0 4px #2aa5ff,
+  0 0 22px 4px rgba(42,165,255,.80),
+  0 0 60px 12px rgba(42,165,255,.55),
+  0 0 90px 20px rgba(42,165,255,.35);
+
+}
+
+/* === Fila 4 (invertida): que el halo abrace SOLO la imagen === */
+.section-dark .split:nth-of-type(4) .split-media.port{
+  flex: 0 0 auto;       /* no fuerces tamaño por flex */
+  width: auto;
+  max-width: 420px;     /* ← AJUSTA el ancho que quieras (360–460px, por ej.) */
+  height: auto;
+  padding: 0;
+  border: 0;
+  box-shadow: none !important; /* quita cualquier glow del contenedor */
+  overflow: visible;           /* no recortes el halo del img */
+  display: grid;
+  place-items: center;         /* centra la imagen si sobra ancho */
+}
+
+.section-dark .split:nth-of-type(4) .split-media.port img{
+  display: block;           /* elimina gap inline */
+  width: 100%;
+  height: auto;             /* conserva proporción */
+  object-fit: contain;      /* no recortes nada */
+  border-radius: 16px;
+  /* Contorno + halo azul pegados a la imagen */
+  box-shadow:
+    0 0 0 4px #2aa5ff,
+    0 0 22px 4px rgba(42,165,255,.80),
+    0 0 60px 12px rgba(42,165,255,.55),
+    0 0 90px 20px rgba(42,165,255,.35);
+}
+
+/* Si también quieres más separación entre texto e imagen en esta fila: */
+.section-dark .split:nth-of-type(4){ gap: 46px; } /* ajusta 36–60px */
+
+
+/* === Fila 4 (invertida): que el halo abrace SOLO la imagen === */
+/* 1) El contenedor NO aporta glow ni padding */
+.section-dark .split:nth-of-type(4) .split-media.port{
+  flex: 0 0 auto;            /* no fuerces tamaño por flex */
+  width: auto;
+  max-width: 420px;          /* ← ajusta a 360–460 px a tu gusto */
+  height: auto;
+  padding: 0;
+  border: 0;
+  box-shadow: none !important;      /* quita cualquier glow del contenedor */
+  overflow: visible;                 /* que no recorte el halo */
+  display: grid;
+  place-items: center;
+}
+
+/* 2) El glow VA en el <img>, pegado al borde de la imagen */
+.section-dark .split:nth-of-type(4) .split-media.port img{
+  display: block;             /* elimina el gap inline */
+  width: 100%;
+  height: auto;               /* conserva proporción */
+  object-fit: contain;        /* no recortes nada */
+  border-radius: 16px;
+  box-shadow:
+    0 0 0 4px #2aa5ff,                          /* borde nítido azul */
+    0 0 22px 4px rgba(42,165,255,.80),          /* halo cercano */
+    0 0 60px 12px rgba(42,165,255,.55),         /* halo medio */
+    0 0 90px 20px rgba(42,165,255,.35);         /* halo lejano */
+}
+
+/* 3) Un poco más de aire entre imagen y texto en esa fila */
+.section-dark .split:nth-of-type(4){
+  gap: 46px;                                    /* prueba 36–60 */
+}
+
+
+/* === FIX Fila 4 (invertida): halo azul pegado a la imagen, sin recortes === */
+.section-dark .split:nth-of-type(4) .split-media.port{
+  /* el contenedor NO aporta halo ni borde */
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;     /* que no se corte el glow */
+  display: grid;                    /* centrado */
+  place-items: center;
+  width: auto;
+  height: auto;
+  max-width: 420px;                 /* AJUSTA el ancho que quieras (p. ej. 360–460) */
+  flex: 0 0 auto;
+}
+
+.section-dark .split:nth-of-type(4) .split-media.port img{
+  display: block;                   /* elimina el gap inline */
+  width: 100%;
+  height: auto;                     /* mantiene proporción */
+  object-fit: contain;              /* no recortes nada */
+  border-radius: 16px;
+  /* contorno + halo azul (pegado a la imagen) */
+  box-shadow:
+    0 0 0 4px #2aa5ff,
+    0 0 22px 4px rgba(42,165,255,.80),
+    0 0 60px 12px rgba(42,165,255,.55),
+    0 0 90px 20px rgba(42,165,255,.35) !important;
+}
+
+/* un poco más de separación entre texto e imagen en esa fila */
+.section-dark .split:nth-of-type(4){ gap: 46px; }
+
+/* opcional: en pantallas chicas, límite menor */
+@media (max-width: 980px){
+  .section-dark .split:nth-of-type(4) .split-media.port{
+    max-width: 340px;
+  }
+}
+
+
+/* Fila 4: halo pegado al borde de la imagen */
+.section-dark .split:nth-of-type(4) .split-media.port{
+  padding:0 !important;
+  border:0 !important;
+  box-shadow:none !important;      /* sin halo en el contenedor */
+  background:transparent !important;
+  overflow:visible !important;
+  display:grid; place-items:center;
+  width:auto; height:auto;
+  max-width:420px;                 /* ajusta el tamaño de ESA imagen */
+  flex:0 0 auto;
+}
+.section-dark .split:nth-of-type(4) .split-media.port img.img-glow-db{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  border-radius:16px;
+  box-shadow:
+    0 0 0 4px #2aa5ff,
+    0 0 22px 4px rgba(42,165,255,.80),
+    0 0 60px 12px rgba(42,165,255,.55),
+    0 0 90px 20px rgba(42,165,255,.35) !important; /* halo en la IMAGEN */
+}
+.section-dark .split:nth-of-type(4){ gap:46px; }  /* más aire texto–imagen */
+
+.section-dark .split:nth-of-type(4) .split-media.port img{
+  box-shadow:
+    0 0 0 4px #2aa5ff,                 /* grosor y color del borde */
+    0 0 22px 4px rgba(42,165,255,.80),  /* halo cercano (sube/baja .80) */
+    0 0 60px 12px rgba(42,165,255,.55), /* halo medio  (sube/baja .55) */
+    0 0 90px 20px rgba(42,165,255,.35); /* halo lejano (sube/baja .35) */
+}
+
+@media (max-width: 980px){
+  .section-dark .split:nth-of-type(4) .split-media.port{
+    max-width: 340px;  /* tope en pantallas pequeñas */
+  }
+}
+/* === Fila 4 (invertida): que el halo azul abrace SOLO la imagen === */
+.section-dark .split:nth-of-type(4) .split-media.port{
+  overflow: visible !important;   /* que no recorte el halo */
+  padding: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;    /* sin glow en el contenedor */
+  width: auto; height: auto;
+  display: grid; place-items: center;
+  max-width: 420px;               /* ajusta 360–460px si quieres */
+  flex: 0 0 auto;
+}
+
+.section-dark .split:nth-of-type(4) .split-media.port img{
+  display: block;
+  width: 100%;
+  height: auto;                   /* mantiene proporción */
+  object-fit: contain;            /* no recorta la captura */
+  border-radius: 16px;
+  /* contorno + halo azul */
+  box-shadow:
+    0 0 0 4px #2aa5ff,
+    0 0 22px 4px rgba(42,165,255,.80),
+    0 0 60px 12px rgba(42,165,255,.55),
+    0 0 90px 20px rgba(42,165,255,.35);
+}
+
+/* Fila 4: que el contenedor no recorte el glow */
+.section-dark .split:nth-of-type(4) .split-media.port{
+  overflow: visible !important;
+}
+
+/* Fila 4: contorno + halo AZUL en la IMAGEN (pegado al borde) */
+.section-dark .split:nth-of-type(4) .split-media.port img.img-glow-db{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  border-radius:16px;
+  /* contorno nítido + halos (ajusta intensidades a gusto) */
+  box-shadow:
+    0 0 0 4px #2aa5ff !important,            /* borde azul */
+    0 0 22px 4px rgba(42,165,255,.80) !important,
+    0 0 60px 12px rgba(42,165,255,.55) !important,
+    0 0 90px 20px rgba(42,165,255,.35) !important;
+}
+
+
+/* === Fila 5: limitar tamaño y mantener el glow blanco === */
+.section-dark .split:nth-of-type(5) .split-media.port{
+  flex: 0 0 auto;           /* que no se estire por flex */
+  width: auto;
+  max-width: 460px;         /* ← AJUSTA el ancho que quieras (p.ej. 360–460px) */
+  height: auto;
+  overflow: visible;        /* para que no corte el glow */
+  display: grid;
+  place-items: center;
+}
+
+.section-dark .split:nth-of-type(5) .split-media.port img{
+  width: 100%;
+  height: auto;             /* conserva proporción */
+  object-fit: contain;      /* no recortes nada de la captura */
+  border-radius: 16px;
+  /* Si quieres reforzar el glow blanco directamente en la imagen: */
+  box-shadow:
+    0 0 0 3px #fff,
+    0 0 24px rgba(255,255,255,.7),
+    0 0 48px rgba(255,255,255,.4);
+}
+
+/* Un poco más de aire entre imagen y texto en esa fila (opcional) */
+.section-dark .split:nth-of-type(5){
+  gap: 46px;
+}
+
+
+/* Contorno pegado a la imagen */
+.media-tight-glow{
+  --glow: #28b7ff;     /* color del contorno */
+  --ring: 2px;         /* grosor del aro nítido */
+  position: relative;
+  display: inline-block;
+  padding: 0;          /* ¡sin padding! */
+  margin: 0;
+  border-radius: 18px; /* ajusta a tu gusto */
+  overflow: hidden;    /* para que el radio afecte a la imagen */
+  background: transparent;
+}
+.media-tight-glow img{
+  display: block;      /* elimina el gap inferior de las imágenes inline */
+  width: 100%;         /* o fija un ancho específico si lo necesitas */
+  height: auto;
+  border-radius: inherit;
+}
+.media-tight-glow::before{
+  content: "";
+  position: absolute;
+  inset: 0;            /* pegado a los bordes: sin separación */
+  border-radius: inherit;
+  box-shadow:
+    0 0 0 var(--ring) var(--glow),                          /* aro nítido */
+    0 0 28px 10px color-mix(in srgb, var(--glow) 55%, transparent); /* halo */
+  pointer-events: none;
+}
+
+/* Fila 5: contorno pegado a la imagen (blanco) */
+.section-dark .split:nth-of-type(5) .split-media.port{
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+  display: grid; place-items: center;
+  width: auto; height: auto;
+  max-width: 460px;               /* ajusta el ancho de la imagen de Fila 5 */
+  flex: 0 0 auto;
+}
+.section-dark .split:nth-of-type(5) .split-media.port img{
+  display: block;                  /* quita el gap de imagen inline */
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow:
+    0 0 0 3px #fff,
+    0 0 24px rgba(255,255,255,.70),
+    0 0 48px rgba(255,255,255,.40);
+}
+
+/* (Opcional) Fila 4: contorno azul pegado a la imagen */
+.section-dark .split:nth-of-type(4) .split-media.port{
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+  display: grid; place-items: center;
+  width: auto; height: auto;
+  max-width: 420px;               /* ajusta el ancho de la imagen de Fila 4 */
+  flex: 0 0 auto;
+}
+.section-dark .split:nth-of-type(4) .split-media.port img{
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow:
+    0 0 0 4px #2aa5ff,
+    0 0 22px 4px rgba(42,165,255,.80),
+    0 0 60px 12px rgba(42,165,255,.55),
+    0 0 90px 20px rgba(42,165,255,.35);
+}
+
+
+/* Glow pegado a la imagen, sin padding del contenedor (para Fila 5) */
+.split-media.tight-glow{
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;   /* que el contenedor no aporte halo */
+  overflow: visible !important;  /* que no recorte el halo */
+  display: grid; place-items: center;
+  width: auto; height: auto;
+  max-width: 460px;              /* ajusta el ancho a tu gusto */
+  flex: 0 0 auto;
+}
+.split-media.tight-glow img{
+  display: block;       /* elimina el gap inline */
+  width: 100%;
+  height: auto;         /* mantiene proporción */
+  object-fit: contain;  /* no recortes la captura */
+  border-radius: 16px;
+  /* contorno + halo BLANCO pegados a la imagen */
+  box-shadow:
+    0 0 0 3px #fff,
+    0 0 24px rgba(255,255,255,.70),
+    0 0 48px rgba(255,255,255,.40);
+}
+
+/* ===== Fila 5: layout y reset locales ===== */
+.split.fila5{
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  padding-block: 40px;
+}
+
+/* Anula efectos heredados (glow, paddings, fondos) SOLO dentro de Fila 5 */
+.fila5-media{
+  flex: 0 0 auto;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  position: relative;
+  overflow: visible !important;
+}
+
+/* Si el tema mete glow por ::before, lo apagamos aquí */
+.fila5-media::before{
+  content: none !important;
+}
+
+/* Columna de texto */
+.fila5-content{
+  flex: 1 1 auto;
+  max-width: 720px;
+}
+
+/* ===== Imagen con contorno PEGADO y tamaño manual ===== */
+.fila5-img{
+  display: block;
+  width: 360px;         /* ← ajusta el tamaño manualmente */
+  max-width: 36vw;      /* ayuda responsiva en pantallas grandes */
+  height: auto;
+  margin: 0 !important;
+  border-radius: 16px;  /* opcional */
+  /* Contorno azul PEGADO + glow */
+  box-shadow:
+    0 0 0 3px #12a5ff,                        /* contorno pegado */
+    0 0 22px rgba(18,165,255,0.60),
+    0 0 46px rgba(18,165,255,0.35) !important;
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 900px){
+  .split.fila5{
+    flex-direction: column;
+    gap: 24px;
+  }
+  .fila5-img{
+    width: 260px;      /* más chica en móvil */
+    max-width: 80vw;
+  }
+  .fila5-content{
+    max-width: none;
+  }
+}
+
+/* ==== BLOQUES "slice" (independientes) ==== */
+.slice{
+  display:flex;
+  align-items:center;
+  gap:48px;
+  max-width:1200px;
+  margin:72px auto;
+  padding:0 24px;
+}
+.slice--invert{ flex-direction: row-reverse; }
+
+/* Columna de texto */
+.slice__content{
+  flex:1 1 520px;
+  color:#eaeaea;
+}
+.slice__content h3{
+  font-size:28px;
+  line-height:1.15;
+  margin:0 0 12px;
+  color:#fff;
+}
+.slice__content p{
+  margin:0 0 12px;
+  font-size:18px;
+  line-height:1.6;
+  color:#d8d8d8;
+}
+
+/* Columna de imagen (sin márgenes/espacios raros) */
+.slice__media{
+  position:relative;
+  overflow:visible;     /* deja respirar el resplandor */
+}
+.slice__media img{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:20px;
+}
+
+/* Tamaños controlados según tipo de imagen */
+.slice__media.phone{             /* vertical 9:16 */
+  flex:0 0 clamp(260px, 26vw, 360px);
+  max-width:clamp(260px, 26vw, 360px);
+}
+.slice__media.wide{              /* horizontal 16:9 */
+  flex:0 0 clamp(520px, 52vw, 780px);
+  max-width:clamp(520px, 52vw, 780px);
+}
+
+/* Contorno + glow azul, P-E-G-A-D-O a la imagen */
+.slice__media.glow-blue img{
+  box-shadow:
+    0 0 0 4px #2aa5ff,                          /* borde nítido pegado */
+    0 0 22px 4px rgba(42,165,255,.85),          /* halo cercano */
+    0 0 60px 14px rgba(42,165,255,.45);         /* halo externo */
+}
+
+/* Responsive */
+@media (max-width: 940px){
+  .slice,
+  .slice--invert{ flex-direction:column; }
+  .slice__media.phone,
+  .slice__media.wide{ max-width:min(720px, 92vw); }
+  .slice__content{ width:100%; }
+}
+
+
+/* Quitar la inclinación de las imágenes verticales en los bloques "slice" */
+.slice .phone {
+  position: static;          /* evita el posicionamiento absoluto del hero */
+  transform: none !important;/* anula el rotate de .phone en @media */
+  top: auto; right: auto;    /* limpia offsets si los hubiera */
+}
+/* === FIX: Slices A y B (imágenes verticales 9:16) === */
+
+/* Tamaño consistente estilo teléfono */
+.slice .slice__media.phone{
+  flex: 0 0 340px;     /* ancho fijo similar al de la fila 3 */
+  max-width: 340px;
+  width: 340px;
+}
+
+/* Respeta 9:16 y evita recortes extraños */
+.slice .slice__media.phone img{
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* Glow azul pegado a la imagen (como en las otras filas) */
+.slice .slice__media.phone.glow-blue img{
+  box-shadow:
+    0 0 0 4px #2aa5ff,
+    0 0 22px 4px rgba(42,165,255,.80),
+    0 0 60px 12px rgba(42,165,255,.55),
+    0 0 90px 20px rgba(42,165,255,.35);
+}
+
+/* Columna de texto con misma jerarquía que las otras (fila 3) */
+.slice__content h3{
+  font-weight: 800;
+  letter-spacing: .02em;
+  margin: 0 0 10px;
+}
+.slice__content p{
+  margin: 0 0 12px;
+  line-height: 1.55;
+}
+
+/* Estructura y separaciones para que no se monten */
+.slice{
+  align-items: center;
+  gap: 46px;           /* similar a las filas que ya se ven bien */
+}
+
+/* Responsivo: apilar en pantallas medianas/chicas */
+@media (max-width: 980px){
+  .slice{ flex-direction: column; gap: 28px; }
+  .slice .slice__media.phone{
+    flex: 0 0 auto;
+    max-width: 78vw;   /* ocupa ancho cómodo en móvil */
+    width: auto;
+  }
+}
+
+/* === “Slices” verticales (filas A y B): evitar conflicto con .phone del hero === */
+.slice__media.phone-vert{
+  position: relative;
+  overflow: visible;         /* que no corte el glow */
+  flex: 0 0 auto;            /* que no se deforme por flex */
+  display: grid;
+  place-items: center;
+  width: auto;
+  max-width: 360px;          /* ANCHO de “teléfono” (ajusta 320–380) */
+}
+
+.slice__media.phone-vert img{
+  display: block;
+  width: 100%;
+  height: auto;              /* conserva proporción 9:16 del archivo */
+  border-radius: 16px;
+  /* contorno azul pegado + glow, igual estilo que las otras */
+  box-shadow:
+    0 0 0 3px #2aa5ff,
+    0 0 24px rgba(42,165,255,.70),
+    0 0 48px rgba(42,165,255,.40);
+}
+
+/* Que el texto no se choque: mismo aire que la fila 3 */
+.slice{ gap: 48px; }         /* puedes bajar a 40 si quieres más compacto */
+
+/* Tipografía consistente con el resto */
+.slice__content h3{
+  font-family: 'Lemon Milk', sans-serif;
+  font-weight: 900;
+}
+
+/* === Tamaño consistente tipo "imagen 3" para filas con clase .phone === */
+.split.phone .split-media {
+  /* bloque de imagen más delgado */
+  flex: 0 0 340px;              /* ancho fijo comparable al de la imagen 3 */
+  max-width: 340px;
+}
+
+.split.phone .split-media.port img {
+  display: block;
+  width: 100%;
+  height: auto;                 /* respeta 9:16 del teléfono */
+  border-radius: 18px;
+}
+
+/* Ajusto el brillo para que no “coma” espacio visual */
+.split.phone .glow-bluke,
+.split.phone .glow-whited {
+  border-radius: 22px;
+  box-shadow:
+    0 0 0 2px rgba(14,165,255,0.9) inset, /* filo */
+    0 0 26px 10px rgba(14,165,255,0.55);  /* halo */
+}
+
+/* Un poco más chico en pantallas medianas si hace falta */
+@media (min-width: 1200px) {
+  .split.phone .split-media {
+    flex-basis: 360px;
+    max-width: 360px;
+  }
+}
+
+/* En móviles, que el bloque ocupe casi todo el ancho pero mantenga proporción */
+@media (max-width: 768px) {
+  .split.phone .split-media {
+    flex-basis: 75vw;
+    max-width: 75vw;
+  }
+}
+
+/* ===== Ajuste final para Slices A y B (vertical 9:16) ===== */
+
+/* layout y tipografía iguales que el resto */
+.slice.phon .slice__content h3{
+  font-size: 26px;          /* como las secciones anteriores */
+  line-height: 1.2;
+  margin: 0 0 10px;
+}
+.slice.phon .slice__content p{
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 0 0 12px;
+}
+
+/* Imagen vertical tipo teléfono: ancho controlado como en la slice 3 */
+.slice.phon .slice__media.phone-vert{
+  flex: 0 0 320px;          /* ≈ ancho de un teléfono */
+  max-width: 320px;
+  overflow: visible;        /* para que el glow no se corte */
+}
+.slice.phon .slice__media.phone-vert img{
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;     /* mantiene 9:16 real */
+  object-fit: cover;        /* sin deformar */
+  display: block;
+}
+
+/* En pantallas medianas: un poco más compacto */
+@media (max-width: 1100px){
+  .slice.phon .slice__media.phone-vert{
+    flex-basis: 300px;
+    max-width: 300px;
+  }
+}
+
+/* En móvil: apila y reduce como la slice 3 */
+@media (max-width: 900px){
+  .slice.phon{ flex-direction: column; gap: 24px; }
+  .slice.phon.slice--invert{ flex-direction: column; }
+  .slice.phon .slice__media.phone-vert{
+    flex: 0 0 auto;
+    max-width: 260px;       /* tamaño telefónico en móvil */
+  }
+  .slice.phon .slice__content{ text-align: left; }
+}
+
+/* ===== Scroll reveal util ===== */
+.reveal {
+  --d: 0ms;                /* delay opcional por elemento */
+  opacity: 0;
+  transform: translateY(24px) scale(.98);
+  filter: blur(6px);
+  transition: opacity 700ms cubic-bezier(.2,.65,.2,1) var(--d),
+              transform 700ms cubic-bezier(.2,.65,.2,1) var(--d),
+              filter 700ms cubic-bezier(.2,.65,.2,1) var(--d);
+  will-change: opacity, transform, filter;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* variantes de dirección */
+.reveal.from-left  { transform: translateX(-36px); }
+.reveal.from-right { transform: translateX(36px);  }
+.reveal.fade-up    { transform: translateY(24px);  }
+
+/* cuando se revela, se quita la traslación */
+.reveal.revealed.from-left,
+.reveal.revealed.from-right,
+.reveal.revealed.fade-up {
+  transform: none;
+}
+
+/* ayuditas de delay (puedes usarlas o ignorarlas) */
+.d100 { --d: 100ms; }
+.d200 { --d: 200ms; }
+.d300 { --d: 300ms; }
+.d400 { --d: 400ms; }
+
+/* === CTA Soporte (estilo pastilla azul con contorno) === */
+.support-row{
+  margin-top: 28px;
+  display: flex;
+  justify-content: flex-start;
+}
+.btn-support-outline{
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 26px;
+  border-radius: 999px;
+  background: #1c64cc;                  /* azul lleno */
+  color: #fff;
+  border: 2.5px solid rgba(255,255,255,.18); /* contorno sutil tipo el de WhatsApp */
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.35),
+    0 0 0 3px rgba(28,100,204,.28) inset;     /* aro interior */
+  font-weight: 700;
+  letter-spacing: .01em;
+  cursor: pointer;
+}
+.btn-support-outline .ico{ font-size: 20px; }
+.btn-support-outline .txt{ display: grid; line-height: 1.05; }
+.btn-support-outline .txt small{ font-weight: 600; opacity: .9; }
+
+/* Hover/active accesibles */
+.btn-support-outline:hover{
+  filter: brightness(1.04);
+  transform: translateY(-1px);
+}
+.btn-support-outline:active{
+  transform: translateY(1px);
+}
+
+/* === Widget de chat === */
+.al-chat{
+  position: fixed;
+  right: 20px;
+  bottom: 96px;           /* para no chocar con botones inferiores */
+  width: 320px;
+  max-height: 70vh;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 22px 48px rgba(0,0,0,.35);
+  border: 1px solid #e5e7eb;
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  overflow: hidden;
+  z-index: 9999;
+}
+.al-chat__header{
+  background: linear-gradient(145deg,#0F6FDC,#0A51AF);
+  color:#fff; padding:10px 12px; font-weight:800;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.al-chat__close{
+  background:transparent; border:0; color:#fff; cursor:pointer; font-size:18px;
+}
+.al-chat__body{
+  background:#f8fafc; padding:10px; overflow:auto;
+}
+.al-chat__typing{
+  padding:6px 12px; font-size:12px; color:#6b7280; background:#f8fafc;
+}
+.al-chat__input{
+  display:flex; gap:8px; padding:10px; border-top:1px solid #e5e7eb; background:#fff;
+}
+.al-chat__input input{
+  flex:1; padding:10px 12px; border-radius:12px; border:1px solid #d1d5db; font-size:14px;
+  outline:none;
+}
+.al-chat__input button{
+  background:#1c64cc; color:#fff; border:none; border-radius:12px; padding:10px 14px; cursor:pointer;
+}
+
+/* Burbujas */
+.al-msg{ margin:8px 0; display:flex; }
+.al-msg.you{ justify-content:flex-end; }
+.al-bubble{
+  max-width:78%; padding:10px 12px; border-radius:14px; line-height:1.35; font-size:14px;
+  background:#fff; border:1px solid rgba(0,0,0,.06);
+}
+.al-msg.you .al-bubble{ background:#e8f0ff; border-color:#cfe0ff; }
+
+
+/* === CTA Soporte (botón azul con contorno tipo WhatsApp) === */
+.support-row{
+  margin-top: 28px;
+  display: flex;
+  justify-content: flex-start;
+}
+.btn-support-outline{
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 26px;
+  border-radius: 999px;
+  background: #1c64cc; /* azul */
+  color: #fff;
+  border: 2.5px solid rgba(255,255,255,.18); /* contorno */
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.35),
+    0 0 0 3px rgba(28,100,204,.28) inset; /* aro interior */
+  font-weight: 700;
+  letter-spacing: .01em;
+  cursor: pointer;
+}
+.btn-support-outline .ico{ font-size: 20px; }
+.btn-support-outline .txt{ display: grid; line-height: 1.05; }
+.btn-support-outline .txt small{ font-weight: 600; opacity: .9; }
+.btn-support-outline:hover{ filter: brightness(1.04); transform: translateY(-1px); }
+.btn-support-outline:active{ transform: translateY(1px); }
+
+/* === Widget de chat === */
+.al-chat{
+  position: fixed; right: 20px; bottom: 96px;
+  width: 320px; max-height: 70vh; z-index: 9999;
+  background: #fff; border-radius: 16px;
+  box-shadow: 0 22px 48px rgba(0,0,0,.35);
+  border: 1px solid #e5e7eb;
+  display: grid; grid-template-rows: auto 1fr auto auto; overflow: hidden;
+}
+.al-chat__header{
+  background: linear-gradient(145deg,#0F6FDC,#0A51AF);
+  color:#fff; padding:10px 12px; font-weight:800;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.al-chat__close{ background:transparent; border:0; color:#fff; cursor:pointer; font-size:18px; }
+.al-chat__body{ background:#f8fafc; padding:10px; overflow:auto; }
+.al-chat__typing{ padding:6px 12px; font-size:12px; color:#6b7280; background:#f8fafc; }
+.al-chat__input{ display:flex; gap:8px; padding:10px; border-top:1px solid #e5e7eb; background:#fff; }
+.al-chat__input input{
+  flex:1; padding:10px 12px; border-radius:12px; border:1px solid #d1d5db; font-size:14px; outline:none;
+}
+.al-chat__input button{ background:#1c64cc; color:#fff; border:none; border-radius:12px; padding:10px 14px; cursor:pointer; }
+
+/* Burbujas */
+.al-msg{ margin:8px 0; display:flex; }
+.al-msg.you{ justify-content:flex-end; }
+.al-bubble{
+  max-width:78%; padding:10px 12px; border-radius:14px; line-height:1.35; font-size:14px;
+  background:#fff; border:1px solid rgba(0,0,0,.06);
+}
+.al-msg.you .al-bubble{ background:#e8f0ff; border-color:#cfe0ff; }
+
+/* Centrar el CTA en la franja negra */
+.support-row{
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;   /* <— centrado */
+}
+
+/* Botón (sin cambios fuertes; si quieres aro azul aquí, dime y lo aplico) */
+.btn-support-outline .ico{ display:grid; place-items:center; }
+.btn-support-outline .ico svg{ width:20px; height:20px; }
+
+/* Panel de chat con contorno azul + halo */
+.al-chat{
+  position: fixed; right: 20px; bottom: 96px;
+  width: 320px; max-height: 70vh; z-index: 9999;
+  background: #fff; border-radius: 16px;
+  /* Contorno y brillo AZUL */
+  border: 2.5px solid #2aa5ff;
+  box-shadow:
+    0 18px 40px rgba(0,0,0,.35),
+    0 0 0 3px rgba(42,165,255,.35) inset,
+    0 0 22px 4px rgba(42,165,255,.70),   /* halo cercano */
+    0 0 46px 12px rgba(42,165,255,.40);  /* halo medio */
+  display: grid; grid-template-rows: auto 1fr auto auto; overflow: hidden;
+}
+
+/* CTA centrado en la franja negra */
+.support-row{
+  margin-top:28px;
+  display:flex;
+  justify-content:center;      /* centrado */
+}
+
+/* Botón con contorno y halo azul */
+.btn-support-outline{
+  display:inline-flex; align-items:center; gap:12px;
+  padding:18px 26px; border-radius:999px;
+  background:#1c64cc; color:#fff;
+  border:3px solid #2aa5ff; /* contorno AZUL nítido */
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.35),
+    0 0 0 3px rgba(42,165,255,.35) inset,     /* aro interior */
+    0 0 22px 4px rgba(42,165,255,.70),        /* halo cercano */
+    0 0 46px 12px rgba(42,165,255,.40);       /* halo medio */
+  font-weight:700; letter-spacing:.01em; cursor:pointer;
+}
+.btn-support-outline .ico{ display:grid; place-items:center; }
+.btn-support-outline .ico svg{ width:20px; height:20px; }
+.btn-support-outline .txt{ display:grid; line-height:1.05; }
+.btn-support-outline .txt small{ font-weight:600; opacity:.9; }
+
+/* Oculta SIEMPRE el panel cuando tenga el atributo hidden */
+.al-chat[hidden] { display: none !important; }
+
+/* CTA centrado con más aire arriba/abajo */
+.support-row{
+  /* top  bottom  */
+  margin: 120px 0 96px;     /* ↑ ajusta a tu gusto: 64–96px */
+  display: flex;
+  justify-content: center;
+}
+
+.btn-support-outline .ico::before { content: none !important; }
+.btn-support-outline .ico img { display: none !important; }
+.btn-support-outline .ico svg { width:22px; height:22px; }
+
+
+/* ====== Mejora de contraste en el chat ====== */
+
+/* Fondo del panel un poco más claro para separar del borde */
+.al-chat{
+  background: #f7f9fc;
+}
+
+/* Área de mensajes: padding y scroll suave */
+.al-chat__body{
+  background: #f7f9fc;
+  padding: 14px 14px 8px;
+  overflow-y: auto;
+}
+
+/* Mensaje del usuario (derecha) */
+.al-msg.you{
+  display: flex;
+  justify-content: flex-end;
+  margin: 8px 0;
+}
+.al-msg.you .al-bubble{
+  background: #1e70ff;          /* azul accesible */
+  color: #ffffff;                /* texto blanco (alto contraste) */
+  border: 1px solid #0e57cc;
+  border-radius: 16px 16px 4px 16px;
+  padding: 10px 12px;
+  max-width:
+}
+
+
+/* ===== Burbuja del USUARIO (derecha) ===== */
+.al-msg.you{
+  display:flex; justify-content:flex-end; margin:8px 0;
+}
+.al-msg.you .al-bubble{
+  background:#1e70ff;
+  color:#fff;                         /* texto blanco */
+  border:1px solid #0e57cc;
+  border-radius:16px 16px 4px 16px;
+  padding:10px 12px; max-width:80%;
+  box-shadow:0 6px 14px rgba(30,112,255,.25);
+  line-height:1.25; font-weight:500;
+}
+
+/* ===== Burbuja del BOT (izquierda) ===== */
+.al-msg.bot{
+  display:flex; justify-content:flex-start; margin:8px 0;
+}
+.al-msg.bot .al-bubble{
+  background:#ffffff;                 /* fondo blanco */
+  color:#0f172a;                      /* texto oscuro (alto contraste) */
+  border:1px solid #dbe3f0;
+  border-radius:16px 16px 16px 4px;
+  padding:10px 12px; max-width:80%;
+  box-shadow:0 6px 14px rgba(15,23,42,.06);
+  line-height:1.35;
+}
+
+/* ===== Footer ===== */
+.site-footer{
+  background: #031b3a;              /* azul más oscuro que el fondo */
+  padding: 26px min(6vw, 40px) 34px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 -8px 30px rgba(0,0,0,.25);
+  margin-top: 30px;
+  color: #fff;
+}
+
+.footer-inner{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-left h3{
+  margin: 0 0 4px;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+.footer-left p{
+  margin: 0;
+  opacity: .8;
+  font-size: 14px;
+}
+
+.footer-right{
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.footer-link{
+  color: rgba(255,255,255,.82);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.footer-link:hover{
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer-copy{
+  margin: 14px 0 0;
+  font-size: 12px;
+  opacity: .45;
+}
+
+/* móvil */
+@media (max-width: 640px){
+  .footer-inner{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+
+/* reducir espacio debajo del último bloque de tarjetas */
+section:last-of-type {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+/* el footer ya no empuja tanto hacia abajo */
+.site-footer{
+  margin-top: 10px;
+}
+
+.page-content{
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  padding-top: 48vh;
+  padding-bottom: 10px;   /* antes 200px */
+}
+
+
+.footer-right{
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-link.footer-social{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,.85);
+  text-decoration: none;
+  font-weight: 600;
+  transition: .2s ease;
+}
+
+.footer-link.footer-social .icon{
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+}
+
+.footer-link.footer-social svg{
+  width: 20px;
+  height: 20px;
+  fill: none;                 /* sin relleno */
+  stroke: #fff;               /* bordes blancos */
+  stroke-width: 1.6;
+}
+
+.footer-link.footer-social.yt svg,
+.footer-link.footer-social.tk svg {
+  stroke-width: 1.4;
+}
+
+.footer-link.footer-social:hover{
+  text-decoration: none;
+}
+
+.footer-link.footer-social.fb:hover{
+  color: #1877F2;
+}
+
+.footer-link.footer-social.fb:hover svg{
+  fill: #1877F2;
+  stroke: #1877F2;
+}
+
+.footer-link.footer-social.yt:hover{
+  color: #FF0000;
+}
+.footer-link.footer-social.yt:hover svg{
+  fill: #FF0000;
+  stroke: #FF0000;
+}
+
+.footer-link.footer-social.tk:hover{
+  color: #25F4EE;
+}
+.footer-link.footer-social.tk:hover svg{
+  fill: #25F4EE;
+  stroke: #25F4EE;
+}
+
+/* móvil */
+@media (max-width: 640px){
+  .footer-right{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+
+.footer-link.footer-social svg{
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.footer-link.footer-social.yt svg path,
+.footer-link.footer-social.yt svg rect,
+.footer-link.footer-social.tk svg path {
+  /* para que sí se pueda rellenar en hover */
+  fill: none;
+  stroke: #fff;
+}
+
+.footer-link.footer-social.yt:hover svg path,
+.footer-link.footer-social.yt:hover svg rect {
+  fill: #FF0000;
+  stroke: #FF0000;
+}
+
+.footer-link.footer-social.tk:hover svg path {
+  fill: #25F4EE;
+  stroke: #25F4EE;
+}
+
+.footer-social{
+  display:flex;
+  gap:40px;
+  align-items:center;
+}
+
+.social-link{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#fff;
+  font-weight:700;
+  text-decoration:none;
+  transition:color .25s ease;
+}
+
+/* ===== Facebook ===== */
+.icon-facebook{
+  width:18px; height:22px;
+  border:2px solid #fff;
+  border-top:none;
+  border-right:none;
+  position:relative;
+  display:inline-block;
+  transform:translateY(1px);
+}
+.icon-facebook::before{
+  content:"";
+  position:absolute;
+  top:-6px; left:6px;
+  width:6px; height:6px;
+  border-left:2px solid #fff;
+  border-bottom:2px solid #fff;
+}
+.social-link.fb:hover{
+  color:#1877F2;
+}
+.social-link.fb:hover .icon-facebook,
+.social-link.fb:focus-visible .icon-facebook{
+  border-color:#1877F2;
+}
+.social-link.fb:hover .icon-facebook::before{
+  border-color:#1877F2;
+}
+
+.footer-social{
+  display:flex;
+  gap:40px;
+  align-items:center;
+}
+
+.social-link{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#fff;
+  font-weight:700;
+  text-decoration:none;
+  transition:color .25s ease;
+}
+
+/* ===== Facebook ===== */
+.icon-facebook{
+  width:18px; height:22px;
+  border:2px solid #fff;
+  border-top:none;
+  border-right:none;
+  position:relative;
+  display:inline-block;
+  transform:translateY(1px);
+}
+.icon-facebook::before{
+  content:"";
+  position:absolute;
+  top:-6px; left:6px;
+  width:6px; height:6px;
+  border-left:2px solid #fff;
+  border-bottom:2px solid #fff;
+}
+.social-link.fb:hover{
+  color:#1877F2;
+}
+.social-link.fb:hover .icon-facebook,
+.social-link.fb:focus-visible .icon-facebook{
+  border-color:#1877F2;
+}
+.social-link.fb:hover .icon-facebook::before{
+  border-color:#1877F2;
+}
+
+/* ===== YouTube (rectángulo rojo con triángulo blanco) ===== */
+.icon-youtube{
+  width:46px; height:28px;
+  border:2px solid #fff;
+  border-radius:10px;
+  display:inline-block;
+  position:relative;
+  transition:background .25s ease, border-color .25s ease;
+}
+.icon-youtube::after{
+  content:"";
+  position:absolute;
+  top:50%; left:50%;
+  transform:translate(-35%, -50%);
+  width:0; height:0;
+  border-top:6px solid transparent;
+  border-bottom:6px solid transparent;
+  border-left:10px solid #fff;   /* siempre blanco */
+}
+.social-link.yt:hover{
+  color:#FF0000;
+}
+.social-link.yt:hover .icon-youtube,
+.social-link.yt:focus-visible .icon-youtube{
+  background:#FF0000;
+  border-color:#FF0000;
+}
+
+/* ===== TikTok (círculo con nota) ===== */
+.icon-tiktok{
+  width:28px; height:28px;
+  border:2px solid #fff;
+  border-radius:50%;
+  display:inline-block;
+  position:relative;
+  transition:border-color .25s ease, background .25s ease;
+}
+.icon-tiktok::before{
+  content:"";
+  position:absolute;
+  width:7px; height:12px;
+  border-left:2px solid #fff;
+  border-bottom:2px solid #fff;
+  top:4px; left:9px;
+  transform:rotate(-10deg);
+}
+.icon-tiktok::after{
+  content:"";
+  position:absolute;
+  width:6px; height:6px;
+  border:2px solid #fff;
+  border-radius:50%;
+  bottom:3px; right:5px;
+}
+.social-link.tk:hover{
+  color:#25F4EE;
+}
+.social-link.tk:hover .icon-tiktok,
+.social-link.tk:focus-visible .icon-tiktok{
+  border-color:#25F4EE;
+  background:rgba(37,244,238,.08);
+}
+.social-link.tk:hover .icon-tiktok::before,
+.social-link.tk:hover .icon-tiktok::after{
+  border-color:#25F4EE;
+}
+
+/* --- Footer redes --- */
+.footer-social .icon svg {
+  width: 26px;
+  height: 26px;
+  stroke: #fff;
+  fill: none;
+  stroke-width: 1.8;
+}
+
+/* Facebook */
+.footer-social.fb:hover {
+  color: #1877f2;
+}
+.footer-social.fb:hover .icon svg path {
+  fill: #1877f2;
+  stroke: #1877f2;
+}
+
+/* YouTube */
+.footer-social.yt .icon svg rect {
+  stroke: #fff;
+  fill: none;
+  stroke-width: 1.6;
+}
+.footer-social.yt .icon svg path {
+  /* triángulo al centro, blanco siempre */
+  fill: #fff;
+  stroke: none;
+}
+.footer-social.yt:hover {
+  color: #ff0000;
+}
+.footer-social.yt:hover .icon svg rect {
+  fill: #ff0000;   /* caja roja */
+  stroke: #ff0000;
+}
+/* triángulo sigue blanco aunque esté hover */
+.footer-social.yt:hover .icon svg path {
+  fill: #fff;
+}
+
+/* TikTok */
+.footer-social.tk .icon svg path {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.footer-social.tk:hover {
+  color: #1ff3eb; /* tono tiktok */
+}
+.footer-social.tk:hover .icon svg path {
+  stroke: #25f4ee;
+}
+
+.footer-social.yt .icon svg .yt-play {
+  fill: #fff;           /* SIEMPRE blanco */
+  transition: fill .2s ease;
+}
+
+.footer-social.yt:hover .icon svg .yt-play {
+  fill: #fff;           /* aunque se ponga rojo el fondo, el play sigue blanco */
+}
+
+/* 1) Triángulo de YouTube más grande cuando está activo */
+.footer-link.yt:hover .icon svg path[data-part="yt-play"],
+.footer-link.yt:focus-visible .icon svg path[data-part="yt-play"]{
+  transform: scale(1.35);      /* más grande */
+  transform-origin: 50% 50%;   /* centrado */
+}
+
+/* 2) Más separación entre icono y texto de TikTok */
+.footer-link.tk .icon{
+  margin-right: 12px; /* antes 8px */
+}
+
+
+.footer-copy {
+  color: rgba(219,230,255,.5);
+  font-size: .8rem;
+}
+.footer-copy a.footer-legal {
+  color: rgba(219,230,255,.7);
+  text-decoration: none;
+}
+.footer-copy a.footer-legal:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+.footer-sep {
+  margin: 0 .35rem;
+  opacity: .4;
+}
+.footer-made {
+  opacity: .7;
+}
+
+
+/* PON ESTO EN TU style.css */
+
+/* contenedor de los links legales en el footer */
+.footer-legal{
+  display:flex;
+  gap:1.5rem;
+  margin-top:1.5rem;
+  flex-wrap:wrap;
+}
+.footer-legal .legal-link{
+  background:none;
+  border:none;
+  color:rgba(255,255,255,0.65);
+  font:inherit;
+  cursor:pointer;
+  transition:color .2s;
+}
+.footer-legal .legal-link:hover{
+  color:#fff;
+}
+
+/* MODALES */
+.al-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.55);
+  display:none;
+  align-items:flex-start;
+  justify-content:center;
+  padding:3rem 1rem;
+  z-index:9999;
+}
+.al-modal.is-open{
+  display:flex;
+}
+.al-modal__box{
+  background:#fff;
+  max-width:680px;
+  width:100%;
+  border-radius:16px;
+  box-shadow:0 20px 40px rgba(0,0,0,.15);
+  padding:1.8rem 1.5rem 1.5rem;
+  max-height:90vh;
+  overflow-y:auto;
+}
+.al-modal__box h2{
+  margin-top:0;
+  margin-bottom:1rem;
+  color:#0B5FCA;
+}
+.al-modal__box h3{
+  margin-top:1rem;
+  margin-bottom:.5rem;
+}
+.al-modal__box p, .al-modal__box li{
+  color:#222;
+  line-height:1.5;
+}
+.al-modal__close{
+  background:none;
+  border:none;
+  font-size:1.4rem;
+  position:absolute;
+  right:1.5rem;
+  top:1.2rem;
+  cursor:pointer;
+  color:#999;
+}
+@media (max-width:600px){
+  .al-modal{
+    padding:2rem .5rem;
+  }
+  .al-modal__box{
+    max-width:100%;
+  }
+  .footer-legal{
+    flex-direction:column;
+  }
+}
+
+.footer-legal button.legal-link {
+  background: rgba(44, 58, 255, 0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #2c2fe3;
+  padding: 4px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform .08s ease, box-shadow .08s ease;
+  box-shadow: 0 3px 0 rgba(0,0,0,0.25);
+}
+
+.footer-legal button.legal-link:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.35);
+}
+
+
+.site-footer .footer-copy{
+  margin-top: 28px;   /* súbelo o bájalo a tu gusto: 12, 16, 20... */
+  font-size: 0.9rem;
+  color: rgba(225,238,250,0.55);
+}
+
+
+
+/*CAMBIOS PARA EL RESPONSIVO*/
+
+
+/* ==== Fix scroll horizontal en móvil ==== */
+@media (max-width: 820px){
+  html, body{
+    overflow-x: hidden;
+  }
+
+  /* que la barra de beneficios ya no sea en fila infinita */
+  .features{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  /* el fondo oscuro no debe medir más que la pantalla */
+  .section-dark::before{
+    width: 100%;
+    left: 0;
+    transform: none;
+  }
+}

@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AL Calculadora</title>
+  <!-- Favicons -->
+<link rel="icon" type="image/png" sizes="32x32"  href="img/favicon-32.png?v=2">
+<link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon-180.png?v=2">
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <!-- Banner de beneficios arriba -->
+  <div class="features features--banner">
+    <div class="feat">
+      <div class="feat-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9.25"></circle>
+          <path d="M12 6.5v6l4 2"></path>
+        </svg>
+      </div>
+      <div class="feat-texts">
+        <div class="feat-title">Ahorra tiempo</div>
+        <div class="feat-sub">Calcula en pocos pasos</div>
+      </div>
+    </div>
+
+    <div class="feat">
+      <div class="feat-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 4.5 3.5 9.5 12 14.5 20.5 9.5 12 4.5Z"></path>
+          <path d="M3.5 13.5 12 18.5 20.5 13.5"></path>
+        </svg>
+      </div>
+      <div class="feat-texts">
+        <div class="feat-title">Menos desperdicio</div>
+        <div class="feat-sub">Cortes optimizados</div>
+      </div>
+    </div>
+
+    <div class="feat">
+      <div class="feat-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20 7 10.5 16.5 6 12"></path>
+          <circle cx="12" cy="12" r="9.25"></circle>
+        </svg>
+      </div>
+      <div class="feat-texts">
+        <div class="feat-title">Cotizaciones precisas</div>
+        <div class="feat-sub">Resultados consistentes</div>
+      </div>
+    </div>
+
+    <div class="feat">
+      <div class="feat-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="4.75" y="3.75" width="14.5" height="16.5" rx="2.5" ry="2.5"></rect>
+          <path d="M8 8h8M8 12h6M8 16h4"></path>
+        </svg>
+      </div>
+      <div class="feat-texts">
+        <div class="feat-title">Notas</div>
+        <div class="feat-sub">Guarda tus apuntes</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero-header">
+    <div class="hero-inner">
+      <div class="logo-text">AL</div>
+      <div class="title-underline"></div>
+      <div class="subtitle">CALCULADORA</div>
+      <p class="tagline" id="tagline">Calcula ventanas, puertas y perfiles en segundos.</p>
+    </div>
+  </section>
+<!-- Cómo funciona -->
+<aside class="hiw" aria-label="Cómo funciona">
+  <h3 class="hiw-title">Cómo funciona</h3>
+
+  <ol class="hiw-steps">
+    <!-- Paso 1 -->
+    <li class="hiw-step">
+      <div class="hiw-badge">1</div>
+      <div class="hiw-body">
+        <div class="hiw-head">
+          <!-- icono: módulos -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9 3h6v6H9zM3 9h6v6H3zM9 15h6v6H9zM15 9h6v6h-6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+          <strong>Elige una opción</strong>
+        </div>
+        <p class="hiw-desc">Ventanas, puertas, cotización o notas.</p>
+      </div>
+    </li>
+
+    <!-- Paso 2 -->
+    <li class="hiw-step">
+      <div class="hiw-badge">2</div>
+      <div class="hiw-body">
+        <div class="hiw-head">
+          <!-- icono: regla/medidas -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 7h18v10H3zM6 10h2M10 10h2M14 10h2M18 10h2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <strong>Ingresa medidas</strong>
+        </div>
+        <p class="hiw-desc">Medidas y opciones; cortes optimizados.</p>
+      </div>
+    </li>
+
+    <!-- Paso 3 -->
+    <li class="hiw-step">
+      <div class="hiw-badge">3</div>
+      <div class="hiw-body">
+        <div class="hiw-head">
+          <!-- icono: check/cotización -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20 6l-11 11-5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <strong>Obtén la cotización o cortes</strong>
+        </div>
+        <p class="hiw-desc">Resultados precisos listos para trabajar.</p>
+      </div>
+    </li>
+  </ol>
+</aside>
+
+  <!-- Teléfono -->
+  <aside class="phone">
+    <div class="phone__bezel">
+      <div class="phone__notch" aria-hidden="true"></div>
+      <div class="phone__screen" id="phoneScreen">
+        <img class="screen-img is-visible" src="img/home.jpg" alt="pantalla 1" />
+        <img class="screen-img" src="img/ventanas.jpg" alt="pantalla 2" />
+        <img class="screen-img" src="img/puertas.jpg"  alt="pantalla 3" />
+        <img class="screen-img" src="img/cotizador.jpg" alt="pantalla 4" />
+        <img class="screen-img" src="img/formulas.jpg" alt="pantalla 5" />
+        <img class="screen-img" src="img/cotizador-general.jpg" alt="pantalla 6" />
+        <img class="screen-img" src="img/precios.jpg" alt="pantalla 7" />
+        <img class="screen-img" src="img/notas.jpg" alt="pantalla 8" />
+      </div>
+    </div>
+  </aside>
+
+  <!-- Botón Google Play centrado abajo -->
+  <a
+    id="downloadBtn"
+    class="store-cta"
+    href="https://play.google.com/store/apps/details?id=com.alcalculadora.app"
+    target="_blank"
+    rel="noopener"
+    aria-label="Disponible en Google Play"
+  >
+    <img class="play-badge" src="img/icono-googleplay.jpg" alt="Disponible en Google Play" loading="lazy">
+  </a>
+    <!-- Mensaje de ayuda para descargar -->
+  <div class="download-hint" role="note" aria-live="polite">
+    Has clic en el botón de abajo para <strong>descargar la app</strong>.
+  </div>
+<main class="page-content" id="contenido">
+  <!-- Acerca -->
+  <section class="section reveal">
+    <h2>¿Qué es AL Calculadora?</h2>
+    <p>
+      AL Calculadora es una herramienta profesional, desarrollada por alumineros y para alumineros, porque ¿quién conoce mejor las necesidades del oficio que quien lo ejerce? Por eso nos enfocamos en que cada función de la app sea lo más precisa y eficiente para el trabajo diario en el taller.
+    </p>
+    <p>
+      Si eres nuevo y recién estás comenzando en este gran oficio, te recomendamos el curso 🔥<strong>Cancelería de cero a experto</strong>🔥 para que aprendas las bases del trabajo y emprendas tu propio negocio altamente rentable. De igual forma, si ya eres maestro del oficio, podras agilizar tu trabajo en un  40% con ayuda de esta app.
+    </p>
+  </section>
+
+  <!-- Cards (3 columnas) -->
+  <section class="section reveal">
+    <h2>Lo más relevante</h2>
+    <div class="cards3">
+      <article class="card3">
+        <h3>Optimización de material📈</h3>
+        <p>Algoritmos para reducir el desperdicio de material en cada trabajo y ajustarse para reutilizar el material sobrante.</p>
+      </article>
+      <article class="card3">
+        <h3>Cotizador📋</h3>
+        <p>Presupuestos claros y consistentes listos para enviar a tus clientes, con la posibilidad de ajustar de acuerdo a tus necesidades en el cotizador general.</p>
+      </article>
+      <article class="card3">
+        <h3>Notas📝</h3>
+        <p>¡Adiós libreta! Guarda notas y datos clave por proyecto y expórtalos cuando los necesites. Todo en un solo lugar.</p>
+      </article>
+      <article class="card3">
+        <h3>Creador de fórmulas🧮</h3>
+        <p>Crea y edita con tu equipo fórmulas. Con el apartado del creador de fórmulas obtienes rapidez y precisión a tu medida, sin errores.</p>
+      </article>
+      <article class="card3">
+        <h3>Sin conexión a internet🛜</h3>
+        <p>No importa donde te encuentres, siempre tendrás acceso a la app, ya que no depende de internet para utilizar sus funciones.</p>
+      </article>
+      <article class="card3">
+        <h3>Actualizaciones constantes📲</h3>
+        <p>Para mantenerte al día y con las mejores herramientas, trabajamos duro para integrar más funciones por el mismo precio.</p>
+      </article>
+    </div>
+  </section>
+
+
+  <!-- === Sección destacada (entre "Lo más relevante" y "Relacionado") === -->
+<section class="section-dark">
+
+
+  <h2>Comienza hoy mismo.</h2>
+
+  <!-- Fila 1 -->
+  <div class="split">
+    <div class="split-media portrait glow-blue reveal">
+    <img src="img/home.jpg" alt="Vista de módulo o pantalla">
+  </div>
+  <div class="split-content reveal">
+      <h3>Diseño intuitivo.</h3>
+      <p>
+        “AL Calculadora” está pensada para ser simple desde el primer toque: un diseño claro, pasos guiados y botones  muy entendibles que te llevan de las medidas al resultado sin enredos. No necesitas manuales largos ni conocimientos  muy técnicos; todo está donde esperas. Literalmente, hasta un niño de primaria podría utilizarla.
+      </p>
+      <p>
+        Al mismo tiempo, no sacrifica potencia: calcula cortes optimizados, arma cotizaciones consistentes y te permite ajustar ganancias y extras en segundos. Funciona fluido, incluso sin conexión, para que trabajes sin interrupciones. En pocas palabras: fácil de usar, pero profesional para el taller.
+      </p>
+    </div>
+  </div>
+
+  <!-- Fila 2 (invertida: imagen a la derecha) -->
+  <div class="split invert">
+    <div class="split-media port glow-white reveal">
+      <img src="img/Dupla.jpg" alt="Otra vista o ejemplo">
+    </div>
+    <div class="split-content reveal">
+      <h3>Fórmulas y descuentos.</h3>
+      <p>
+        Usa las fórmulas de piezas precargadas para empezar rápido: solo eliges el tipo de trabajo y ajustas los descuentos a tu medida. Todo está listo para que obtengas resultados consistentes sin perder tiempo armando cálculos desde cero.
+      </p>
+      <p>
+        ¿Necesitas algo más específico? También puedes crear tus propias fórmulas y descuentos de forma libre y muy sencilla. Define tus reglas, guárdalas y reutilízalas cuando quieras. Así trabajas exactamente como acostumbras, pero más rápido y con menos errores.
+      </p>
+    </div>
+  </div>
+
+<!-- Fila 3 -->
+  <div class="split">
+    <div class="split-media port glow-whited reveal">
+    <img src="img/paquete.jpg" alt="Vista de módulo o pantalla">
+  </div>
+  <div class="split-content reveal">
+      <h3>Modo de trabajo.</h3>
+      <p>
+        Usa el botón “Agregar a paquete de ventanas” cada vez que tengas listo un conjunto de piezas. Al hacerlo, la app agrupa automáticamente los perfiles del trabajo y ordena los cortes de mayor a menor, priorizando primero los perfiles más largos. Esto reduce el riesgo de quedarte corto por un mal orden de corte y aprovecha mejor cada tramo de perfil.
+      </p>
+      <p>
+        Además, con el paquete creado podrás generar el plan de cortes optimizado en un solo paso y obtener una cotización consistente sin rehacer cálculos. Si luego cambias medidas o agregas piezas, vuelve a actualizar el paquete para que la optimización se recalcule y mantengas el consumo de material al mínimo.
+      </p>
+    </div>
+  </div>
+
+  <!-- Fila 4 (invertida: imagen a la derecha) -->
+  <div class="split invert">
+    <div class="split-media port reveal">
+      <img class="img-glow-db" src="img/database.jpg" alt="Otra vista o ejemplo">
+    </div>
+    <div class="split-content reveal">
+      <h3>Tu base de datos.</h3>
+      <p>
+        Ingresa los precios reales de los perfiles que manejas en tu zona y “AL” construirá tu base de datos personal. Así cada cálculo parte de tus costos, no de valores genéricos, y las cotizaciones reflejan exactamente tu mercado: claras, consistentes y listas para compartir.
+      </p>
+      <p>
+        Solo captura una vez y reutiliza siempre: actualiza precios cuando cambien, duplica listas por línea o proveedor y deja que la app haga el resto. Menos tiempo corrigiendo números, más tiempo ganando trabajos con presupuestos precisos.
+      </p>
+    </div>
+  </div>
+
+<!-- ===== Fila A (Imagen 1 — vertical 9:16) ===== -->
+<section class="slice phon">
+  <div class="slice__media phone-vert glow-blue reveal">
+    <img src="img/barra5.jpg" alt="Vista del módulo (vertical)">
+  </div>
+  <div class="slice__content reveal">
+    <h3>Cotizaciones a la mano.</h3>
+    <p>Guarda y organiza tus cotizaciones en un solo lugar. Consulta fechas, totales y elementos sin perder nada de vista; todo queda listo para continuar trabajando donde lo dejaste.</p>
+    <p>Con esta base podrás comparar propuestas, duplicar trabajos y responder más rápido a tus clientes, manteniendo la trazabilidad de cada proyecto.</p>
+  </div>
+</section>
+
+<!-- ===== Fila B (Imagen 2 — vertical 9:16, invertida) ===== -->
+<section class="slice phon slice--invert">
+  <div class="slice__media phone-vert glow-blue reveal">
+    <img src="img/notas.jpg" alt="Panel de elementos (vertical)">
+  </div>
+  <div class="slice__content reveal">
+    <h3>Construye piezas sin enredos.</h3>
+    <p>Elige elementos, ajusta medidas y arma tus piezas de forma visual. Los cambios se aplican al instante y puedes reutilizar configuraciones para acelerar tu flujo de trabajo.</p>
+    <p>Duplica, edita o elimina con un toque y mantén tus listas siempre ordenadas para cotizar rápido y con precisión.</p>
+  </div>
+</section>
+
+<!-- ===== Fila C (Imagen 3 — horizontal 16:9) ===== -->
+<section class="slice">
+  <div class="slice__media wide glow-blue reveal">
+    <img src="img/curso3.jpg" alt="Curso AL Calculadora">
+  </div>
+  <div class="slice__content reveal">
+    <h3>Aprende con el curso oficial.</h3>
+    <p>Domina AL Calculadora con un curso directo al grano: desde lo básico hasta flujos pro para que reduzcas errores, mejores tiempos y presentes presupuestos impecables.</p>
+    <p>Incluye ejemplos guiados y buenas prácticas para que apliques de inmediato en tu día a día.</p>
+  </div>
+</section>
+
+<!-- ===== Fila D (Imagen 4 — horizontal 16:9, invertida) ===== -->
+<section class="slice slice--invert">
+  <div class="slice__media wide glow-blue reveal">
+    <img src="img/como.jpg" alt="Cómo obtener la app y planes">
+  </div>
+  <div class="slice__content reveal">
+    <h3>¿Cómo obtener la app?</h3>
+    <p>Descárgala desde Google Play. Elige el plan que más te convenga y empieza a trabajar con herramientas pensadas para tu taller.</p>
+    <p>Plan mensual o anual con descuento: cambia de plan cuando lo necesites y mantén siempre tu trabajo al día.</p>
+  </div>
+</section>
+
+
+
+<!-- === CTA de soporte (abajo de la sección negra) === -->
+<div class="support-row">
+  <button class="btn-support-outline" id="btnSupport" aria-controls="alChat" aria-expanded="false">
+    <span class="ico" aria-hidden="true">🛟</span>
+    <span class="txt">
+      <strong>¿Tienes dudas?</strong>
+      <small>Chatea con nosotros</small>
+    </span>
+  </button>
+</div>
+
+
+
+
+</section>
+
+
+
+
+
+  <!-- Galería -->
+  <section class="section">
+    <h2>Contenido relacionado</h2>
+    <div class="gallery-grid">
+
+
+
+
+
+
+      <figure>
+        <a
+  class="card3 rel-curso pressable"
+  href="https://api.whatsapp.com/send?phone=5215664075288&text=Hola%20Josue%20ft%20%F0%9F%91%8B%20quiero%20acceder%20a%20la%20SUPER%20promoci%C3%B3n%20de%20octubre%20%F0%9F%98%8E%20del%20CURSO%20DE%20CANCELERIA%20DE%20CERO%20A%20EXPERTO%F0%9F%94%A5%20Y%20saber%20como%20conseguir%20el%20regalo%20extra%20%F0%9F%8E%81"
+  target="_blank"
+  rel="noopener"
+  aria-label="Ir a WhatsApp para solicitar información del curso de Cancelería de cero a experto"
+  style="text-decoration:none"
+>
+        <img src="img/galeria-1.jpg" alt="Vista del módulo de ventanas" loading="lazy">
+        <figcaption>🔥<strong>Cancelería de cero a experto</strong>🔥 <br>Si te interesa el curso haz clic aquí para empezar!!</figcaption>
+      </a>
+      </figure>
+      
+
+
+
+      <figure>
+        <a
+  class="card3 rel-curso pressable"
+  href="https://chat.whatsapp.com/JuIPSxv4pihIKsF4mrBLZh?mode=wwt"
+  target="_blank"
+  rel="noopener"
+  aria-label="Ir a WhatsApp para solicitar información del curso de Cancelería de cero a experto"
+  style="text-decoration:none"
+>
+        <img src="img/icono-al.jpg" alt="Vista del módulo de ventanas" loading="lazy">
+        <figcaption>⚒️<strong>Grupo de AL Calculadora</strong>⚒️ <br>Únete a nuestro grupo y comparte tu experiencia con la comunidad.</figcaption>
+      </a>
+      </figure>
+      
+      
+      <figure>
+        <a
+  class="card3 rel-curso pressable"
+  href="https://api.whatsapp.com/send?phone=5215664075288&text=Hola%20Josue%20ft%20%F0%9F%91%8B%20quiero%20acceder%20a%20la%20SUPER%20promoci%C3%B3n%20de%20octubre%20%F0%9F%98%8E%20del%20CURSO%20DE%20CANCELERIA%20DE%20CERO%20A%20EXPERTO%F0%9F%94%A5%20Y%20saber%20como%20conseguir%20el%20regalo%20extra%20%F0%9F%8E%81"
+  target="_blank"
+  rel="noopener"
+  aria-label="Ir a WhatsApp para solicitar información del curso de Cancelería de cero a experto"
+  style="text-decoration:none"
+>
+        <img src="img/el-jos.jpg" alt="Vista del módulo de ventanas" loading="lazy">
+        <figcaption>💯💥<strong>Video informativo</strong>💥💯 <br>Introduccion a "AL Calculadora" como herramienta de trabajo.</figcaption>
+      </a>
+      </figure>
+      
+    </div>
+
+    
+  </section>
+
+  <!-- Espaciado final para no tapar el botón de Play -->
+  <div class="page-spacer" aria-hidden="true"></div>
+</main>
+
+
+
+<!-- === Panel de chat AL • IA === -->
+<div class="al-chat" id="alChat" role="dialog" aria-modal="true" aria-label="Chat de soporte" hidden>
+  <div class="al-chat__header">
+    <span class="al-chat__title" style="display:flex;align-items:center;gap:8px;">
+      <!-- Icono: agente de soporte con diadema -->
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"
+           fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 11a7 7 0 0 1 14 0"/>
+        <rect x="3" y="11" width="3.2" height="5" rx="1.6"/>
+        <rect x="17.8" y="11" width="3.2" height="5" rx="1.6"/>
+        <circle cx="12" cy="10" r="3.2"/>
+        <path d="M7 20a5 5 0 0 1 10 0"/>
+        <path d="M17 15.5h1.2a2 2 0 0 0 2-2"/>
+        <circle cx="20.2" cy="13.5" r="0.5"/>
+      </svg>
+      <span>Platicanos más.</span>
+    </span>
+    <button class="al-chat__close" id="alChatClose" aria-label="Cerrar">✕</button>
+  </div>
+
+  <div class="al-chat__body" id="alChatBody"></div>
+  <div class="al-chat__typing" id="alTyping" aria-live="polite" aria-atomic="true" hidden>Escribiendo…</div>
+  <div class="al-chat__input">
+    <input id="alChatInput" type="text" placeholder="Escribe tu pregunta..." />
+    <button id="alChatSend">Enviar</button>
+  </div>
+</div>
+
+
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <!-- IZQUIERDA -->
+    <div class="footer-left">
+      <h3>AL Calculadora</h3>
+      <p>Herramienta profesional para alumineros.</p>
+
+      <!-- fila de enlaces legales -->
+      <div class="footer-legal-row">
+        <button class="legal-link" data-modal="modal-privacidad">Aviso de privacidad</button>
+        <span class="footer-sep">•</span>
+        <button class="legal-link" data-modal="modal-terminos">Términos de uso</button>
+        <span class="footer-sep">•</span>
+        <button class="legal-link" data-modal="modal-descargo">Descargo de responsabilidades</button>
+        <span class="footer-sep">•</span>
+        <span class="footer-made">Hecho en 🇲🇽</span>
+        <span class="footer-sep">•</span>
+        <span class="footer-meta">Última actualización: oct 2025</span>
+      </div>
+
+      <!-- copyright abajo -->
+      <p class="footer-copy">© 2025 AL Calculadora. Todos los derechos reservados.</p>
+    </div>
+
+    <!-- DERECHA -->
+    <div class="footer-right">
+      <!-- FACEBOOK -->
+      <a href="https://www.facebook.com/share/19xkoKNANp/" target="_blank" rel="noopener" class="footer-link footer-social fb">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M14 4h-2.2C9.7 4 8.5 5.3 8.5 7.6V10H7v2.7h1.5V20h3v-7.3h1.9L14 10h-2.5V7.8c0-.7.3-1.2 1.3-1.2H14V4z"></path>
+          </svg>
+        </span>
+        <span>Facebook</span>
+      </a>
+
+      <!-- YOUTUBE -->
+      <a href="https://www.youtube.com/@ftherreriayaluminio" target="_blank" rel="noopener" class="footer-link footer-social yt">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3.3" y="6.5" width="17.4" height="11" rx="3" ry="3"></rect>
+            <path d="M10.5 8.5v7l4.5-3.5z"></path>
+          </svg>
+        </span>
+        <span>YouTube</span>
+      </a>
+
+      <!-- TIKTOK -->
+      <a href="https://www.tiktok.com/@josueftm" target="_blank" rel="noopener" class="footer-link footer-social tk">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" class="icon-tiktok" aria-hidden="true">
+            <path d="M16.5 8.3c-.9-.5-1.7-1.3-2.2-2.2-.3-.6-.5-1.2-.6-1.9h-2.2v9.1c0 1-.8 1.9-1.9 1.9s-1.9-.8-1.9-1.9 0-.1 0-.1c0-1 .8-1.8 1.9-1.8.2 0 .5 0 .7.1V9.2c-.2 0-.5-.1-.7-.1-2.1 0-3.7 1.6-3.7 3.7 0 2 .1 3 1.5 3.9.6.4 1.4.6 2.2.6 2.1 0 3.7-1.6 3.7-3.7V9.7c.7.7 1.6 1.2 2.6 1.4v-2Z"></path>
+          </svg>
+        </span>
+        <span>TikTok</span>
+      </a>
+    </div>
+  </div>
+</footer>
+
+
+
+<!-- PON ESTO AL FINAL DEL BODY (antes de </body>) -->
+
+<!-- MODAL AVISO DE PRIVACIDAD -->
+<div id="modal-privacidad" class="al-modal">
+  <div class="al-modal__box">
+    <button class="al-modal__close" data-close>&times;</button>
+    <h2>Aviso de privacidad</h2>
+    <p><b>AL Calculadora</b> (“la App”, “nosotros”) es una herramienta para alumineros. Este aviso explica qué datos
+      recopilamos, para qué los usamos y cómo puedes ejercer tus derechos.</p>
+    <h3>1. Datos que podemos recopilar</h3>
+    <ul>
+      <li>Nombre y/o correo o cuenta de Google.</li>
+      <li>Identificador de dispositivo (para controlar sesiones).</li>
+      <li>Información de suscripción y pagos de Google Play.</li>
+      <li>Datos técnicos (idioma, zona horaria/hora automática).</li>
+      <li>Mensajes que nos envíes a soporte.</li>
+    </ul>
+    <h3>2. Para qué usamos tus datos</h3>
+    <ul>
+      <li>Crear y mantener tu cuenta.</li>
+      <li>Validar y administrar tu suscripción y modo sin conexión.</li>
+      <li>Mejorar la App y evitar usos indebidos.</li>
+      <li>Atender soporte.</li>
+    </ul>
+    <h3>3. Compartimos tus datos?</h3>
+    <p>No vendemos tus datos. Podemos compartir lo mínimo con Google/Google Play y servicios de hosting solo para operar.</p>
+    <h3>4. Tus derechos</h3>
+    <p>Puedes pedir acceso, corrección o eliminación escribiendo a
+      <a href="https://wa.me/522721917499" target="_blank" rel="noopener">Soporte de AL</a>.
+    </p>
+    <p><small>Última actualización: 27 de octubre de 2025.</small></p>
+  </div>
+</div>
+
+<!-- MODAL TÉRMINOS DE USO -->
+<div id="modal-terminos" class="al-modal">
+  <div class="al-modal__box">
+    <button class="al-modal__close" data-close>&times;</button>
+    <h2>Términos de uso</h2>
+    <p>Al usar <b>AL Calculadora</b> aceptas lo siguiente:</p>
+    <h3>1. Servicio</h3>
+    <p>Es una herramienta de apoyo para cálculos, notas y cotizaciones de aluminio. Los resultados pueden requerir revisión.</p>
+    <h3>2. Cuenta y acceso</h3>
+    <ul>
+      <li>Inicio de sesión con correo/contraseña o Google.</li>
+      <li>Solo una sesión activa por cuenta.</li>
+      <li>La App puede pedir activar fecha y hora automática para validar tu suscripción.</li>
+    </ul>
+    <h3>3. Suscripciones y pagos</h3>
+    <p>Los planes se pagan dentro de la App (Google Play). Si no se paga, se bloquean las funciones premium.</p>
+    <h3>4. Uso permitido</h3>
+    <p>No copiar, revender ni compartir tu cuenta. No usar la App para fines ilegales.</p>
+    <h3>5. Limitación de responsabilidad</h3>
+    <p>Los cálculos son de apoyo. El usuario es responsable del uso real en obra/proyecto.</p>
+    <p><small>Última actualización: 27 de octubre de 2025.</small></p>
+  </div>
+
+</div>
+
+<!-- MODAL AVISO DE PRIVACIDAD -->
+<div id="modal-descargo" class="al-modal">
+  <div class="al-modal__box">
+    <button class="al-modal__close" data-close>&times;</button>
+    <h2>Descargo de responsabilidades</h2>
+    <p>
+      Los nombres, logotipos e íconos de Google, Facebook, YouTube, TikTok y demás
+      marcas mostradas en esta página son propiedad de sus respectivos titulares.
+      Se utilizan únicamente con fines identificativos e informativos para mostrar
+      compatibilidad o enlaces hacia sus servicios.
+    </p>
+    <p>
+      Esta aplicación no está afiliada, patrocinada ni respaldada oficialmente por
+      Google LLC, Meta Platforms, Inc., YouTube LLC, TikTok o terceros, salvo que
+      se indique expresamente.
+    </p>
+    <p>
+      Los estilos visuales de botones (por ejemplo, “Continuar con Google”) son una
+      representación dentro de la interfaz de AL Calculadora y no implican relación
+      comercial directa.
+    </p>
+  </div>
+</div>
+
+
+
+<!-- JS PARA ABRIR/CERRAR MODALES -->
+<script>
+  document.addEventListener('click', function (e) {
+    const btn = e.target.closest('[data-modal]');
+    const closeBtn = e.target.closest('[data-close]');
+    // abrir
+    if (btn) {
+      const id = btn.getAttribute('data-modal');
+      const modal = document.getElementById(id);
+      if (modal) modal.classList.add('is-open');
+    }
+    // cerrar
+    if (closeBtn || e.target.classList.contains('al-modal')) {
+      document.querySelectorAll('.al-modal.is-open').forEach(m => m.classList.remove('is-open'));
+    }
+  });
+</script>
+
+
+
+
+
+
+</body>
+</html>
