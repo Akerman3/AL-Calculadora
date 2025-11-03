@@ -1243,6 +1243,11 @@ document.getElementById('downloadBtn')?.addEventListener('click', () => {
   triggers: ["puedo ponerle contraseña a mis notas", "notas privadas"],
   reply: "De momento no, pero puedes llevar tus notas sensibles afuera y usar la app para lo operativo."
 },
+
+{
+  triggers: ["no entiendo", "No entiendo", "no sirves", "no te entiendo", "No te entiendo"],
+  reply: "Por favor tenme paciensia es mi primera chamba.🥹"
+},
 {
   triggers: ["puedo usarla para aluminio y vidrio a la vez", "uso aluminio y vidrio"],
   reply: "Sí, es lo que muchos hacen: calculan aluminio y guardan precios de vidrio en la misma base."
@@ -2295,3 +2300,29 @@ function getBotReply(userText) {
     el.style.lineHeight = '0';
   });
 })();
+
+// === Carrusel para todos los <div class="phone__screen"> ===
+(() => {
+  const screens = document.querySelectorAll('.phone__screen');
+  if (!screens.length) return;
+
+  const INTERVAL = 4000; // 4s por slide (ajusta a gusto)
+
+  screens.forEach((screen) => {
+    const slides = Array.from(screen.querySelectorAll('.screen-img'));
+    if (slides.length <= 1) return;
+
+    // Asegura estado inicial
+    let i = slides.findIndex(s => s.classList.contains('is-visible'));
+    if (i < 0) { slides[0].classList.add('is-visible'); i = 0; }
+
+    setInterval(() => {
+      slides[i].classList.remove('is-visible');
+      i = (i + 1) % slides.length;
+      slides[i].classList.add('is-visible');
+    }, INTERVAL);
+  });
+})();
+
+
+
