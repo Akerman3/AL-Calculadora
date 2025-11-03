@@ -2325,4 +2325,43 @@ function getBotReply(userText) {
 })();
 
 
+// === Contadores: animación al entrar en viewport ===
+(function(){
+  const wrapper = document.getElementById('counters');
+  if (!wrapper) return;
+
+  let done = false;
+
+  const easeOutQuad = t => t*(2-t);
+
+  function animateCount(el, to, duration=1400){
+    const start = performance.now();
+    const from = 0;
+    const isInt = Number.isInteger(to);
+    function frame(now){
+      const p = Math.min(1, (now - start)/duration);
+      const eased = easeOutQuad(p);
+      const value = from + (to - from) * eased;
+      el.textContent = isInt ? Math.round(value) : value.toFixed(1);
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !done){
+        wrapper.classList.add('is-visible');
+        wrapper.querySelectorAll('.count').forEach(el => {
+          const target = parseFloat(el.dataset.target || '0');
+          animateCount(el, target);
+        });
+        done = true;
+        io.disconnect();
+      }
+    });
+  }, { threshold: 0.25 });
+
+  io.observe(wrapper);
+})();
 

@@ -13,8 +13,9 @@
 
 /* ===== Fondo ===== */
 html, body{
-  background: #082F6C;
-  height:100%; 
+  background: #0b3a7a;
+  height:100%;
+  min-height: 100%; 
   margin:0;
   background:
     radial-gradient(900px 520px at 78% 14%, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0) 60%),
@@ -1829,14 +1830,6 @@ a.card3:focus{
   font-size: 14px;
 }
 
-.footer-legal-row{
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-top: 12px;
-}
-
 .footer-right{
   display: flex;
   gap: 14px;
@@ -2259,26 +2252,11 @@ section:last-of-type {
   border:none;
   color:rgba(255,255,255,0.65);
   font:inherit;
-  font-size: 12px;
   cursor:pointer;
   transition:color .2s;
-  text-decoration: underline;
 }
 .footer-legal .legal-link:hover{
   color:#fff;
-}
-
-.legal-link{
-  background: transparent;
-  border: none;
-  color: rgba(255,255,255,0.7);
-  cursor: pointer;
-  padding: 0;
-  font-size: inherit;
-  text-decoration: underline;
-}
-.legal-link:hover{
-  color: #fff;
 }
 
 /* MODALES */
@@ -2426,7 +2404,6 @@ section:last-of-type {
 
 /*CAMBIOS PARA EL RESPONSIVO*/
 
-<<<<<<< HEAD
 /* Versión compacta del banner en móvil: solo icono + título */
 @media (max-width: 768px){
   .features{
@@ -2769,7 +2746,7 @@ section:last-of-type {
   /* Centra y corrige el ligero corrimiento a la derecha */
   .phone--mobile{
     /* X: empuja ~4px a la izquierda | Y: bájalo 4% de su alto */
-    transform: translate(calc(-50% - 10px), -38%) rotate(0deg);
+    transform: translate(calc(110% - 20px), -38%) rotate(0deg);
     /* si lo quieres un pelín más abajo, usa -45% o -44% */
   }
 }
@@ -2911,7 +2888,7 @@ section:last-of-type {
   /* en la fila invertida (donde va database.jpg) el texto va debajo.
      Añadimos margen al segundo hijo (el bloque de texto). */
   .section-dark .split.invert > * + *{
-    margin-top: 2px;   /* ajusta 24–40px a tu gusto */
+    margin-top: 1px;   /* ajusta 24–40px a tu gusto */
   }
 }
 
@@ -3031,520 +3008,207 @@ section:last-of-type {
   margin: 0 auto !important;
 }
 
-
-
-=======
-/* ==== Fix scroll horizontal global ==== */
-html, body{
-  overflow-x: hidden;
-  max-width: 100vw;
-  position: relative;
+/* evita “línea blanca” al fondo */
+.page-spacer{
+  background: transparent;   /* que no pinte nada */
+  height: 0;                 /* por defecto sin alto visible */
 }
 
-body{
-  min-height: 100vh;
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: transparent;
-}
-
-/* ==== MOBILE: pantallas pequeñas (<= 640px) ==== */
-@media (max-width: 640px){
-  /* Banner de beneficios: apilar verticalmente */
-  .features{
-    position: relative;
-    top: 0;
-    margin: 0 8px 20px;
-    grid-auto-flow: row;
-    gap: 10px;
-    padding: 12px;
-  }
-
-  .feat{
-    min-width: 100%;
-    gap: 10px;
-  }
-
-  .feat-icon{
-    width: 46px;
-    height: 46px;
-  }
-
-  .feat-icon svg{
-    width: 26px;
-    height: 26px;
-  }
-
-  .feat-title{
-    font-size: 14px;
-  }
-
-  .feat-sub{
-    font-size: 12px;
-  }
-
-  /* Hero: ajustar tamaños */
-  .hero-header{
-    padding-top: 20px;
-  }
-
-  .hero-inner{
-    transform: translateY(0);
-    padding: 0 10px;
-  }
-
-  .logo-text{
-    font-size: 72px;
-  }
-
-  .title-underline{
-    width: 85vw;
-    height: 2px;
-  }
-
-  .subtitle{
-    font-size: 14px;
-    letter-spacing: .28em;
-  }
-
-  .tagline{
-    font-size: 16px;
-    margin: 24px 0 0;
-    padding: 0 10px;
-    text-align: center;
-  }
-
-  /* Botón Play */
-  .store-cta{
-    bottom: 12vh;
-  }
-
-  .play-badge{
-    height: 56px;
-  }
-
-  /* Mensaje descarga */
-  .download-hint{
-    bottom: calc(12vh + 75px);
-    font-size: 13px;
-    padding: 8px 12px;
-    max-width: 92vw;
-  }
-
-  /* Contenido principal */
-  .page-content{
-    width: 100%;
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 32vh;
-    padding-bottom: 140px;
-  }
-
-  /* Secciones */
-  .section{
-    margin: 20px 0;
-    padding: 14px;
-    border-radius: 12px;
-  }
-
-  .section h2{
-    font-size: 22px;
-    margin: 4px 4px 10px;
-  }
-
-  .section p{
-    font-size: 15px;
-    line-height: 1.5;
-  }
-
-  /* Cards */
-  .card3{
-    grid-column: span 12;
-    padding: 12px;
-  }
-
-  .card3 h3{
-    font-size: 18px;
-    margin: 4px 0 6px;
-  }
-
-  .card3 p{
-    font-size: 14px;
-  }
-
-  /* Galería */
-  .gallery-grid figure{
-    grid-column: span 12;
-  }
-
-  .gallery-grid img{
-    height: 180px;
-  }
-
-  .gallery-grid figcaption{
-    font-size: 13px;
-    padding: 8px 10px;
-  }
-
-  /* Split (bloques imagen + texto) */
-  .split,
-  .split.invert{
-    flex-direction: column;
-    gap: 20px;
-    padding: 12px;
-    margin-bottom: 20px;
-  }
-
-  .split-media,
-  .split-content{
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .split-media.portrait,
-  .split-media.port{
-    flex: 0 0 auto;
-    max-width: 100%;
-  }
-
-  .split-content h3{
-    font-size: 20px;
-  }
-
-  .split-content p{
-    font-size: 15px;
-  }
-
-  /* Sección oscura */
-  .section-dark{
-    padding: 20px 0;
-  }
-
-  .section-dark h2{
-    font-size: 24px;
-    padding: 0 12px;
-    margin-bottom: 20px;
-  }
-
-  .section-dark .split{
-    gap: 24px;
-    padding: 0 12px;
-    margin-bottom: 32px;
-  }
-
-  /* Slices */
-  .slice,
-  .slice--invert{
-    flex-direction: column;
-    gap: 20px;
-    margin: 32px auto;
-    padding: 0 12px;
-  }
-
-  .slice.phon{
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .slice__media.phone-vert{
-    max-width: 280px;
-  }
-
-  .slice__media.wide{
-    max-width: 100%;
-  }
-
-  .slice__content{
-    width: 100%;
-  }
-
-  .slice__content h3{
-    font-size: 20px;
-  }
-
-  .slice__content p{
-    font-size: 15px;
-  }
-
-  /* Botón soporte */
-  .support-row{
-    margin: 48px 0;
-    padding: 0 12px;
-  }
-
-  .btn-support-outline{
-    padding: 14px 20px;
-    font-size: 15px;
-    width: 100%;
-    justify-content: center;
-  }
-
-  /* Chat panel */
-  .al-chat{
-    width: calc(100vw - 20px);
-    right: 10px;
-    bottom: 76px;
-    max-height: 60vh;
-  }
-
-  /* Footer */
-  .site-footer{
-    padding: 20px 12px 24px;
-  }
-
-  .footer-inner{
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-
-  .footer-left h3{
-    font-size: 20px;
-  }
-
-  .footer-left p{
-    font-size: 13px;
-  }
-
-  .footer-legal-row{
-    flex-wrap: wrap;
-    font-size: 12px;
-  }
-
-  .footer-right{
-    width: 100%;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .footer-copy{
-    font-size: 11px;
-    margin-top: 16px;
-  }
-
-  /* Modales */
-  .al-modal{
-    padding: 1.5rem 0.5rem;
-  }
-
-  .al-modal__box{
-    padding: 1.5rem 1rem;
-    border-radius: 12px;
-  }
-
-  .al-modal__box h2{
-    font-size: 20px;
-  }
-
-  .al-modal__box h3{
-    font-size: 17px;
-  }
-
-  .al-modal__box p,
-  .al-modal__box li{
-    font-size: 14px;
+/* si quieres mantener el colchón para el botón flotante: */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .page-spacer{
+    height: calc(16px + env(safe-area-inset-bottom)); /* pequeño colchón, ajusta 16px */
   }
 }
 
-/* ==== TABLET: pantallas medianas (641px - 820px) ==== */
-@media (min-width: 641px) and (max-width: 820px){
-  /* Banner más compacto */
-  .features{
-    gap: 16px;
-    padding: 14px 16px;
-    margin: 0 12px;
-  }
 
-  .feat{
-    min-width: 160px;
-  }
 
-  .feat-icon{
-    width: 50px;
-    height: 50px;
-  }
 
-  /* Hero */
-  .logo-text{
-    font-size: 96px;
-  }
 
-  .subtitle{
-    font-size: 15px;
-  }
 
-  .tagline{
-    font-size: 18px;
-  }
 
-  .play-badge{
-    height: 66px;
-  }
 
-  /* Contenido */
-  .page-content{
-    padding-top: 36vh;
-    width: 94vw;
-  }
-
-  /* Cards: 2 columnas */
-  .card3{
-    grid-column: span 6;
-  }
-
-  .gallery-grid figure{
-    grid-column: span 6;
-  }
-
-  /* Split: apilar */
-  .split,
-  .split.invert{
-    flex-direction: column;
-  }
-
-  .section-dark .split{
-    gap: 28px;
-  }
-
-  /* Slices */
-  .slice,
-  .slice--invert{
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  /* Footer */
-  .footer-inner{
-    flex-wrap: wrap;
-    gap: 16px;
+/* FIX: línea blanca inferior en móvil (bug de background-attachment: fixed) */
+@media (max-width: 680px){
+  html{ background-color:#082F6C; }         /* color de respaldo */
+  body{
+    background-attachment: scroll;          /* quitar el 'fixed' en móvil */
+    min-height: 100svh;                      /* usa viewport dinámico real */
   }
 }
 
-/* ==== DESKTOP PEQUEÑO: (821px - 1024px) ==== */
-@media (min-width: 821px) and (max-width: 1024px){
-  .page-content{
-    width: 90vw;
-  }
 
-  .card3{
-    grid-column: span 6;
-  }
 
-  .gallery-grid figure{
-    grid-column: span 6;
-  }
-}
 
-/* ==== Prevenir overflow en todos los tamaños ==== */
-*, *::before, *::after{
-  box-sizing: border-box;
-}
+/* ===== Fondo ancho detrás del teléfono (SOLO MÓVIL) ===== */
+.hero-worker-wide{ display:none; }  /* oculto por defecto (desktop) */
 
-img{
-  max-width: 100%;
-  height: auto;
-}
+@media (max-width:640px){
+  .hero-phone-spot{ position: relative; overflow: visible; }
 
-.section-dark::before{
-  max-width: 100vw;
-}
+  .hero-worker-wide{
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    /* ocupa todo el “hueco” debajo del título */
+    width: 100vw;
+    height: clamp(180px, 34vh, 300px);
+    bottom: -10px;                /* ajusta arriba/abajo a tu gusto (−20 a +10) */
+    z-index: 40;                   /* debajo del teléfono móvil (que está en 55) */
+    border-radius: 18px;
+    overflow: hidden;
 
-/* Ajustes finales para glows en móvil */
-@media (max-width: 640px){
-  .split-media.glow-blue::after,
-  .split-media.glow-white img,
-  .split-media.glow-whited img{
+    /* Difuminado de las orillas (vignette suave) */
+    -webkit-mask-image: radial-gradient(140% 140% at 50% 50%, #000 68%, rgba(0,0,0,0) 100%);
+            mask-image: radial-gradient(140% 140% at 50% 50%, #000 68%, rgba(0,0,0,0) 100%);
     box-shadow:
-      0 0 0 2px currentColor,
-      0 0 12px 2px rgba(42,165,255,.5);
+      0 20px 50px rgba(0,0,0,.35); /* sombra externa sutil para integrarse */
+  }
+
+  .hero-worker-wide img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;            /* llena sin deformar */
+    object-position: center;      /* centra el rostro/casco */
+    filter: contrast(1.02) saturate(1.05);
+    display: block;
   }
 }
 
-/* ==== MÓVILES MUY PEQUEÑOS: (<= 380px) como iPhone SE ==== */
-@media (max-width: 380px){
-  .logo-text{
-    font-size: 56px;
-  }
+/* === Ajustes finos para centrar la imagen del trabajador (SOLO MÓVIL) === */
+:root{
+  /* mueve el “punto de interés” horizontal de la foto (50% centro, 65% un poco a la derecha) */
+  --workerX: 65%;
+  /* baja/sube el bloque completo respecto al hueco (valores negativos = más abajo) */
+  --workerDrop: -28px;
+  /* ancho y alto del bloque para que no se pegue a los bordes */
+  --workerW: min(92vw, 640px);
+  --workerH: clamp(200px, 36vh, 320px);
+}
 
-  .subtitle{
-    font-size: 12px;
-    letter-spacing: .24em;
+@media (max-width:640px){
+  .hero-worker-wide{
+    width: var(--workerW);
+    height: var(--workerH);
+    bottom: var(--workerDrop);     /* centra verticalmente dentro del hueco */
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 22px;           /* esquinas redondeadas */
   }
-
-  .tagline{
-    font-size: 14px;
-    margin: 20px 0 0;
-  }
-
-  .play-badge{
-    height: 50px;
-  }
-
-  .download-hint{
-    font-size: 12px;
-    padding: 6px 10px;
-  }
-
-  .section h2{
-    font-size: 20px;
-  }
-
-  .card3 h3{
-    font-size: 16px;
-  }
-
-  .split-content h3,
-  .slice__content h3{
-    font-size: 18px;
-  }
-
-  .btn-support-outline{
-    padding: 12px 16px;
-    font-size: 14px;
-  }
-
-  .footer-left h3{
-    font-size: 18px;
-  }
-
-  .footer-legal-row{
-    font-size: 11px;
-    gap: 6px;
+  .hero-worker-wide img{
+    object-fit: cover;
+    object-position: var(--workerX) 50%; /* “panea” horizontalmente la foto */
   }
 }
 
-/* ==== Mejorar touch targets para móvil ==== */
+/* ============================
+   Imagen fondo detrás del teléfono (SOLO MÓVIL)
+   Ajusta SOLO las variables de :root de la media query.
+   ============================ */
 @media (max-width: 640px){
-  .store-cta,
-  .btn-support-outline,
-  .footer-link{
-    min-height: 44px;
+  :root{
+    /* 🡆 mueve aquí para la POSICIÓN de la imagen */
+    --hero-img-shift-x: -2.5rem;   /* + a la derecha | - a la izquierda */
+    --hero-img-shift-y: -1.5rem;   /* + hacia abajo | - hacia arriba   */
+
+    /* 🡆 mueve aquí para el TAMAÑO de la imagen */
+    --hero-img-width: 100vw;    /* ancho de la imagen (ej. 100vw, 120vw, 420px) */
+    --hero-img-height: 26.5vh;    /* alto de la imagen  (ej. 40vh, 320px)         */
+
+    /* 🡆 mueve aquí para el RECORTE/SCALE fino (opcional) */
+    --hero-img-scale: 1;        /* 1 = sin escala, >1 amplia, <1 reduce         */
+
+    /* 🡆 mueve aquí para el DIFUMINADO/BORDES */
+    --hero-img-radius: 0px;    /* redondeado de esquinas                        */
+    --hero-img-fade: 74%;       /* 70–80% = fade suave; baja si quieres menos    */
   }
 
-  .legal-link{
-    min-height: 36px;
-    padding: 4px 8px;
-    display: inline-block;
+  /* el “hueco” donde se dibuja la imagen: NO toca el teléfono */
+  .hero-phone-spot{
+    position: relative;
   }
 
-  .footer-link{
-    min-height: 40px;
-    padding: 8px 0;
+  /* contenedor de la imagen detrás del teléfono */
+  .hero-worker-wide{
+    position: absolute;
+    z-index: 40;                /* detrás del teléfono (asegúrate que el phone tenga >40) */
+    /* ocupa el mismo bloque que el hueco del teléfono */
+    left: 50%;
+    top: 50%;
+
+    /* tamaño base de la imagen */
+    width: var(--hero-img-width);
+    height: var(--hero-img-height);
+
+    /* centrada, con tu desplazamiento ajustable */
+    transform:
+      translate(-50%, -50%)
+      translate(var(--hero-img-shift-x), var(--hero-img-shift-y))
+      scale(var(--hero-img-scale));
+
+    border-radius: var(--hero-img-radius);
+    overflow: hidden;
+    pointer-events: none; /* no bloquear clics del CTA */
   }
 
-  .al-chat__input button{
-    min-height: 44px;
+  .hero-worker-wide img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    /* difuminado en orillas */
+    -webkit-mask-image: radial-gradient(120% 90% at 50% 50%, #000 var(--hero-img-fade), transparent 100%);
+            mask-image: radial-gradient(120% 90% at 50% 50%, #000 var(--hero-img-fade), transparent 100%);
   }
 }
 
-/* ==== Prevenir zoom en inputs en iOS ==== */
-@media (max-width: 640px){
-  input, textarea, select{
-    font-size: 16px;
+/* FIX: teléfono opaco en móvil/tablet */
+@media (max-width: 820px){
+  .phone{ opacity: 1 !important; }
+}
+
+/* Asegura pantalla totalmente sólida (por si algún tema futuro la aclara) */
+.phone__screen{ background:#0a2b4b !important; }
+
+
+/* ===== Franjas blancas en la esquina inferior-izquierda de la imagen (MÓVIL) ===== */
+.hero-photo{
+  position: relative;
+  overflow: hidden;         /* mantiene el recorte de la esquina si tienes border-radius */
+}
+
+/* Ajustes rápidos (puedes cambiarlos) */
+:root{
+  --stripes-size: 120px;           /* tamaño del triángulo */
+  --stripes-thickness: 10px;       /* grosor de la franja blanca */
+  --stripes-gap: 10px;             /* espacio transparente entre franjas */
+  --stripes-angle: 45deg;          /* ángulo de las franjas */
+  --stripes-opacity: 0.95;         /* opacidad de lo blanco */
+}
+
+/* Solo en móviles */
+@media (max-width: 680px){
+  .hero-photo::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: var(--stripes-size);
+    height: var(--stripes-size);
+    /* Triángulo en la esquina */
+    clip-path: polygon(0 0, 0 100%, 100% 100%);
+    /* Franjas diagonales blancas */
+    background: repeating-linear-gradient(
+      var(--stripes-angle),
+      rgba(255,255,255,var(--stripes-opacity)) 0 calc(var(--stripes-thickness)),
+      transparent calc(var(--stripes-thickness)) calc(var(--stripes-thickness) + var(--stripes-gap))
+    );
+    pointer-events: none;   /* no interfiere con clics */
+    z-index: 1;             /* se dibuja encima de la foto pero debajo de elementos con z-index mayor */
+    /* Si tu imagen tiene borde redondeado, el overflow:hidden del contenedor ya recorta bien */
   }
 }
 
-/* ==== Mejorar scrolling en iOS ==== */
-.al-chat__body{
-  -webkit-overflow-scrolling: touch;
-}
->>>>>>> 6d2948fba6791d3606158fd523bb31f963aa7e2b
+
