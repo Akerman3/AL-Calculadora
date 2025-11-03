@@ -1829,6 +1829,14 @@ a.card3:focus{
   font-size: 14px;
 }
 
+.footer-legal-row{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
 .footer-right{
   display: flex;
   gap: 14px;
@@ -2251,11 +2259,26 @@ section:last-of-type {
   border:none;
   color:rgba(255,255,255,0.65);
   font:inherit;
+  font-size: 12px;
   cursor:pointer;
   transition:color .2s;
+  text-decoration: underline;
 }
 .footer-legal .legal-link:hover{
   color:#fff;
+}
+
+.legal-link{
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.7);
+  cursor: pointer;
+  padding: 0;
+  font-size: inherit;
+  text-decoration: underline;
+}
+.legal-link:hover{
+  color: #fff;
 }
 
 /* MODALES */
@@ -2403,6 +2426,7 @@ section:last-of-type {
 
 /*CAMBIOS PARA EL RESPONSIVO*/
 
+<<<<<<< HEAD
 /* Versión compacta del banner en móvil: solo icono + título */
 @media (max-width: 768px){
   .features{
@@ -3009,3 +3033,518 @@ section:last-of-type {
 
 
 
+=======
+/* ==== Fix scroll horizontal global ==== */
+html, body{
+  overflow-x: hidden;
+  max-width: 100vw;
+  position: relative;
+}
+
+body{
+  min-height: 100vh;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ==== MOBILE: pantallas pequeñas (<= 640px) ==== */
+@media (max-width: 640px){
+  /* Banner de beneficios: apilar verticalmente */
+  .features{
+    position: relative;
+    top: 0;
+    margin: 0 8px 20px;
+    grid-auto-flow: row;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .feat{
+    min-width: 100%;
+    gap: 10px;
+  }
+
+  .feat-icon{
+    width: 46px;
+    height: 46px;
+  }
+
+  .feat-icon svg{
+    width: 26px;
+    height: 26px;
+  }
+
+  .feat-title{
+    font-size: 14px;
+  }
+
+  .feat-sub{
+    font-size: 12px;
+  }
+
+  /* Hero: ajustar tamaños */
+  .hero-header{
+    padding-top: 20px;
+  }
+
+  .hero-inner{
+    transform: translateY(0);
+    padding: 0 10px;
+  }
+
+  .logo-text{
+    font-size: 72px;
+  }
+
+  .title-underline{
+    width: 85vw;
+    height: 2px;
+  }
+
+  .subtitle{
+    font-size: 14px;
+    letter-spacing: .28em;
+  }
+
+  .tagline{
+    font-size: 16px;
+    margin: 24px 0 0;
+    padding: 0 10px;
+    text-align: center;
+  }
+
+  /* Botón Play */
+  .store-cta{
+    bottom: 12vh;
+  }
+
+  .play-badge{
+    height: 56px;
+  }
+
+  /* Mensaje descarga */
+  .download-hint{
+    bottom: calc(12vh + 75px);
+    font-size: 13px;
+    padding: 8px 12px;
+    max-width: 92vw;
+  }
+
+  /* Contenido principal */
+  .page-content{
+    width: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 32vh;
+    padding-bottom: 140px;
+  }
+
+  /* Secciones */
+  .section{
+    margin: 20px 0;
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .section h2{
+    font-size: 22px;
+    margin: 4px 4px 10px;
+  }
+
+  .section p{
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  /* Cards */
+  .card3{
+    grid-column: span 12;
+    padding: 12px;
+  }
+
+  .card3 h3{
+    font-size: 18px;
+    margin: 4px 0 6px;
+  }
+
+  .card3 p{
+    font-size: 14px;
+  }
+
+  /* Galería */
+  .gallery-grid figure{
+    grid-column: span 12;
+  }
+
+  .gallery-grid img{
+    height: 180px;
+  }
+
+  .gallery-grid figcaption{
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+
+  /* Split (bloques imagen + texto) */
+  .split,
+  .split.invert{
+    flex-direction: column;
+    gap: 20px;
+    padding: 12px;
+    margin-bottom: 20px;
+  }
+
+  .split-media,
+  .split-content{
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .split-media.portrait,
+  .split-media.port{
+    flex: 0 0 auto;
+    max-width: 100%;
+  }
+
+  .split-content h3{
+    font-size: 20px;
+  }
+
+  .split-content p{
+    font-size: 15px;
+  }
+
+  /* Sección oscura */
+  .section-dark{
+    padding: 20px 0;
+  }
+
+  .section-dark h2{
+    font-size: 24px;
+    padding: 0 12px;
+    margin-bottom: 20px;
+  }
+
+  .section-dark .split{
+    gap: 24px;
+    padding: 0 12px;
+    margin-bottom: 32px;
+  }
+
+  /* Slices */
+  .slice,
+  .slice--invert{
+    flex-direction: column;
+    gap: 20px;
+    margin: 32px auto;
+    padding: 0 12px;
+  }
+
+  .slice.phon{
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .slice__media.phone-vert{
+    max-width: 280px;
+  }
+
+  .slice__media.wide{
+    max-width: 100%;
+  }
+
+  .slice__content{
+    width: 100%;
+  }
+
+  .slice__content h3{
+    font-size: 20px;
+  }
+
+  .slice__content p{
+    font-size: 15px;
+  }
+
+  /* Botón soporte */
+  .support-row{
+    margin: 48px 0;
+    padding: 0 12px;
+  }
+
+  .btn-support-outline{
+    padding: 14px 20px;
+    font-size: 15px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Chat panel */
+  .al-chat{
+    width: calc(100vw - 20px);
+    right: 10px;
+    bottom: 76px;
+    max-height: 60vh;
+  }
+
+  /* Footer */
+  .site-footer{
+    padding: 20px 12px 24px;
+  }
+
+  .footer-inner{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .footer-left h3{
+    font-size: 20px;
+  }
+
+  .footer-left p{
+    font-size: 13px;
+  }
+
+  .footer-legal-row{
+    flex-wrap: wrap;
+    font-size: 12px;
+  }
+
+  .footer-right{
+    width: 100%;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-copy{
+    font-size: 11px;
+    margin-top: 16px;
+  }
+
+  /* Modales */
+  .al-modal{
+    padding: 1.5rem 0.5rem;
+  }
+
+  .al-modal__box{
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+  }
+
+  .al-modal__box h2{
+    font-size: 20px;
+  }
+
+  .al-modal__box h3{
+    font-size: 17px;
+  }
+
+  .al-modal__box p,
+  .al-modal__box li{
+    font-size: 14px;
+  }
+}
+
+/* ==== TABLET: pantallas medianas (641px - 820px) ==== */
+@media (min-width: 641px) and (max-width: 820px){
+  /* Banner más compacto */
+  .features{
+    gap: 16px;
+    padding: 14px 16px;
+    margin: 0 12px;
+  }
+
+  .feat{
+    min-width: 160px;
+  }
+
+  .feat-icon{
+    width: 50px;
+    height: 50px;
+  }
+
+  /* Hero */
+  .logo-text{
+    font-size: 96px;
+  }
+
+  .subtitle{
+    font-size: 15px;
+  }
+
+  .tagline{
+    font-size: 18px;
+  }
+
+  .play-badge{
+    height: 66px;
+  }
+
+  /* Contenido */
+  .page-content{
+    padding-top: 36vh;
+    width: 94vw;
+  }
+
+  /* Cards: 2 columnas */
+  .card3{
+    grid-column: span 6;
+  }
+
+  .gallery-grid figure{
+    grid-column: span 6;
+  }
+
+  /* Split: apilar */
+  .split,
+  .split.invert{
+    flex-direction: column;
+  }
+
+  .section-dark .split{
+    gap: 28px;
+  }
+
+  /* Slices */
+  .slice,
+  .slice--invert{
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* Footer */
+  .footer-inner{
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
+
+/* ==== DESKTOP PEQUEÑO: (821px - 1024px) ==== */
+@media (min-width: 821px) and (max-width: 1024px){
+  .page-content{
+    width: 90vw;
+  }
+
+  .card3{
+    grid-column: span 6;
+  }
+
+  .gallery-grid figure{
+    grid-column: span 6;
+  }
+}
+
+/* ==== Prevenir overflow en todos los tamaños ==== */
+*, *::before, *::after{
+  box-sizing: border-box;
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+.section-dark::before{
+  max-width: 100vw;
+}
+
+/* Ajustes finales para glows en móvil */
+@media (max-width: 640px){
+  .split-media.glow-blue::after,
+  .split-media.glow-white img,
+  .split-media.glow-whited img{
+    box-shadow:
+      0 0 0 2px currentColor,
+      0 0 12px 2px rgba(42,165,255,.5);
+  }
+}
+
+/* ==== MÓVILES MUY PEQUEÑOS: (<= 380px) como iPhone SE ==== */
+@media (max-width: 380px){
+  .logo-text{
+    font-size: 56px;
+  }
+
+  .subtitle{
+    font-size: 12px;
+    letter-spacing: .24em;
+  }
+
+  .tagline{
+    font-size: 14px;
+    margin: 20px 0 0;
+  }
+
+  .play-badge{
+    height: 50px;
+  }
+
+  .download-hint{
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .section h2{
+    font-size: 20px;
+  }
+
+  .card3 h3{
+    font-size: 16px;
+  }
+
+  .split-content h3,
+  .slice__content h3{
+    font-size: 18px;
+  }
+
+  .btn-support-outline{
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+
+  .footer-left h3{
+    font-size: 18px;
+  }
+
+  .footer-legal-row{
+    font-size: 11px;
+    gap: 6px;
+  }
+}
+
+/* ==== Mejorar touch targets para móvil ==== */
+@media (max-width: 640px){
+  .store-cta,
+  .btn-support-outline,
+  .footer-link{
+    min-height: 44px;
+  }
+
+  .legal-link{
+    min-height: 36px;
+    padding: 4px 8px;
+    display: inline-block;
+  }
+
+  .footer-link{
+    min-height: 40px;
+    padding: 8px 0;
+  }
+
+  .al-chat__input button{
+    min-height: 44px;
+  }
+}
+
+/* ==== Prevenir zoom en inputs en iOS ==== */
+@media (max-width: 640px){
+  input, textarea, select{
+    font-size: 16px;
+  }
+}
+
+/* ==== Mejorar scrolling en iOS ==== */
+.al-chat__body{
+  -webkit-overflow-scrolling: touch;
+}
+>>>>>>> 6d2948fba6791d3606158fd523bb31f963aa7e2b
